@@ -1,0 +1,25 @@
+body {
+    padding-top: 90px;
+}
+.publish{
+    margin-bottom: 2em;
+}
+.card{
+    height: 100px;
+    background-color: #fff;
+	box-shadow: 5px 5px 15px rgba(187, 199, 214, 0.56);
+    margin-bottom: 2em;
+    /*margin-left: 3em;*/
+
+}
+.card-body{
+    padding: 1em;
+}
+.card-body img{
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+.card-body h5{
+    margin-left: 12em;
+}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block category %}
+active
+{% endblock %}
+{% block style %}
+<style>
+    .bs-example{
+        border: 1px solid #ddd;
+        padding: 1em;
+        margin: 1em 0;
+        border-radius: 4px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="ljdh">
+        <ol class="breadcrumb">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">版块信息</a></li>
+
+        </ol>
+    </div>
+    <div class="row">
+        {% for category in category_list %}
+        <div class="col-md-6">
+            <div class="media bs-example">
+                <div class="media-left media-middle">
+                    <a href="/categorydetail/?name={{ category.name }}">
+                        <img class="media-object" src="/static/{{ category.image }}" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <a href="/categorydetail/?name={{ category.name }}"><h4 class="media-heading">{{ category.name }}</h4></a>
+                    <p>{{ category.brief }}</p>
+                    <p>
+                        <span style="margin-right: 2em">主题数：{{ category.theme_set.all.count }}</span>
+                        <span>帖子数：{{ category.post_num }}</span>
+                    </p>
+                    <p><a href="/categorydetail/?name={{ category.name }}" class="btn btn-info" role="button">点击进入</a> </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+
+{#        {% for category in category_list %}#}
+{#            <div class="col-sm-6 col-md-4">#}
+{#                <div class="thumbnail">#}
+{#                    <img src="/static/{{ category.image }}" alt="...">#}
+{#                    <div class="caption">#}
+{#                        <h3>{{ category.name }}</h3>#}
+{#                        <p>{{ category.brief }}</p>#}
+{#                        <p>#}
+{#                            <span style="margin-right: 2em">主题数：{{ category.theme_set.all.count }}</span>#}
+{#                            <span>帖子数：{{ category.post_num }}</span>#}
+{#                        </p>#}
+{#                        <p><a href="#" class="btn btn-primary" role="button">点击进入</a> </p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        {% endfor %}#}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}
+河西学院BBS站
+{% endblock %}
+{% block index %}
+active
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+
+        <div class="col-sm-9">
+            {% for post in post_list %}
+            <div class="card">
+                <div class="card-body">
+                    <img src="/static/imgs/avatar.png" alt="" class="img-circle">
+                    <h5>{{ post.title }}</h5>
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+
+        </div>
+
+        <div class="col-sm-3">
+            <div class="publish"><a href="" class="btn bg-primary btn-block">发布帖子</a></div>
+
+            <div class="list-group">
+
+                <a href="#" class="list-group-item disabled">
+                    <span class="glyphicon glyphicon-tags"></span>
+                    热门版块
+                </a>
+                {% for category in category_list %}
+                    <a href="#" class="list-group-item">{{ category.name }}</a>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
