@@ -1,12 +1,12 @@
 from django.contrib.auth.models import User
 from django.db import models
-
 # Create your models here.
 
 
 class Post(models.Model):
     title = models.CharField(max_length=128, verbose_name='标题')
     category = models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name='版块')
+    theme = models.ForeignKey('Theme', on_delete=models.CASCADE, default=1)
     content = models.TextField(verbose_name='帖子内容')
     author = models.ForeignKey('UserProfile', on_delete=models.CASCADE, verbose_name='作者')
     created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
@@ -34,12 +34,12 @@ class Theme(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    username = models.CharField(max_length=64, verbose_name='用户名')
+    name = models.CharField(max_length=64, verbose_name='用户名')
     signature = models.CharField(max_length=128, blank=True, null=True, verbose_name='个性签名')
-    image = models.ImageField(verbose_name='头像')
+    image = models.ImageField(verbose_name='头像', default='imgs/default.png')
 
     def __str__(self):
-        return self.username
+        return self.name
 
 
 

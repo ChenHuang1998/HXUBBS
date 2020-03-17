@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+
+            <div class="col-md-10">
+                <div class="publish-post">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">发新帖</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form action="" method="post">
+                            {% csrf_token %}
+                                <div class="cate-choice">
+                                    <span>版块：</span>
+                                    <select class="form-group" id="post-category" name="post-category">
+                                        <option value="">请选择发布到哪个版块</option>
+                                        {% for category in category_list %}
+                                            <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="theme-choice">
+                                    <span>主题：</span>
+                                    <select class="form-group" id="post-theme" name="post-theme">
+
+                                    </select>
+                                </div>
+                                <div style="clear: both"></div>
+                                <div class="publish-title">
+                                    <label style="float: left">标题:</label>
+                                    <input type="text" class="form-control" name="post-title">
+                                </div>
+                                <div class="publish-content">
+                                    <label style="float: left">内容:</label>
+                                    <textarea class="form-control" name="post-content"></textarea>
+                                </div>
+                                <div class="publish-button">
+                                    <button class="btn - btn-success">确定发表</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-1"></div>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $('#post-category').change(function () {
+            var category_id = $(this).val();
+            {#console.log(category_id);#}
+            $.ajax({
+                url: '/linked/?category_id='+category_id,
+                type: 'get',
+                data: '',
+                success:function (data) {
+                    {#console.log(data['theme_list']);#}
+                    var theme_content = '';
+                    for (var i in data['theme_list']){
+                        {#console.log(data['theme_list'][i]['name']);#}
+                        theme_content +='<option value="'+data['theme_list'][i]['name']+'">'+data['theme_list'][i]['name']+'</option>';
+
+                    }
+                    {#console.log(theme_content)#}
+                    $('#post-theme').html(theme_content)
+
+                },
+                error:function (xhr) {
+                    console.log(xhr)
+                }
+            })
+        })
+    </script>
+{% endblock %}

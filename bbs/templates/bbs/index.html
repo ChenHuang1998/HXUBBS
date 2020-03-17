@@ -13,7 +13,17 @@ active
             <div class="card">
                 <div class="card-body">
                     <img src="/static/imgs/avatar.png" alt="" class="img-circle">
-                    <h5>{{ post.title }}</h5>
+                    <h5><a href="{% url 'postdetail' post.id %}">{{ post.title }}</a></h5>
+                    <div class="detail">
+                        <span class="glyphicon glyphicon-user" style="color: #7f7f7f"></span>
+                        <span>{% if post.author.name %}
+                                        {{ post.author }}
+                                    {% else %}
+                                        {{ post.author.user.username }}
+                                    {% endif %}
+                        </span>
+                        <span>发表于 {{ post.created_time }}</span>
+                    </div>
                 </div>
             </div>
             {% endfor %}
@@ -24,7 +34,7 @@ active
         </div>
 
         <div class="col-sm-3">
-            <div class="publish"><a href="" class="btn bg-primary btn-block">发布帖子</a></div>
+            <div class="publish"><a href="{% url 'publish' %}" class="btn bg-primary btn-block">发布帖子</a></div>
 
             <div class="list-group">
 
@@ -33,7 +43,7 @@ active
                     热门版块
                 </a>
                 {% for category in category_list %}
-                    <a href="#" class="list-group-item">{{ category.name }}</a>
+                    <a href="" class="list-group-item">{{ category.name }}</a>
                 {% endfor %}
 
             </div>

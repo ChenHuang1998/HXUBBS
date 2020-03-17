@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1690394_u7ixcnzpp2m.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="postcard">
+                    <div class="post-title">
+                        <h3>{{ post.title }}</h3>
+                        <div class="post-other">
+                            <span class="glyphicon glyphicon-user" style="color: #7f7f7f"></span>
+                            <span>{% if post.author.name %}
+                                    {{ post.author }}
+                                  {% else %}
+                                    {{ post.author.user }}
+                            {% endif %}
+                            </span>
+                            <span>发表时间 {{ post.created_time|date:'Y-m-d H:i' }}</span>
+                            <span>{{ post.category }}</span>
+                            <span>浏览 </span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="post-content">
+                        {{ post.content }}
+                    </div>
+                    <div class="post-like">
+                        <button class="btn btn-info">
+                            <i class="iconfont icon-dianzan"></i>
+                            <span>128</span>
+                        </button>
+                        <button class="btn btn-info"><i class="iconfont icon-cai"></i>
+                            <span>123</span>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="post-comment">
+                        <h4>发表评论</h4>
+                        {% if request.user.is_authenticated %}
+                            <div class="login-comment">
+                                <textarea></textarea>
+                            </div>
+                            <div class="comment-button">
+                                <button class="btn btn-success">发表评论</button>
+                            </div>
+                        {% else %}
+                            <div class="not-login-comment">
+                                <div>请先 <button class="btn btn-primary">登录</button> 后发表评论</div>
+                            </div>
+                            <div class="comment-button">
+                                <button class="btn btn-success disabled">发表评论</button>
+                            </div>
+                        {% endif %}
+
+                        <div style="clear: both"></div>
+                    </div>
+                    <hr>
+                    <div class="comment-list">
+                        <h4>评论列表</h4>
+                        <div class="comment-content">
+                            <img src="/static/imgs/default.png" alt="" class="img-circle">
+                            <div class="comment-user">这是评论姓名</div>
+                            <div class="comment-detail">这是评论内容</div>
+                            <div class="comment-date">2020-3-10 17:27</div>
+                            <div><hr></div>
+                            <div style="clear: both"></div>
+                        </div>
+
+                        <div class="comment-content">
+                            <img src="/static/imgs/default.png" alt="" class="img-circle">
+                            <div class="comment-user">这是评论姓名</div>
+                            <div class="comment-detail">这是评论内容</div>
+                            <div class="comment-date">2020-3-10 17:27</div>
+                            <div><hr></div>
+                            <div style="clear: both"></div>
+                        </div>
+
+                        <div class="comment-content">
+                            <img src="/static/imgs/default.png" alt="" class="img-circle">
+                            <div class="comment-user">这是评论姓名</div>
+                            <div class="comment-detail">这是评论内容</div>
+                            <div class="comment-date">2020-3-10 17:27</div>
+                            <hr>
+                            <div style="clear: both"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card card-post">
+                    <div class="card-cont">
+                        <div class="card-title"><img src="/static/imgs/default.png" alt="" class="img-circle"></div>
+                        <div class="row" style="margin: 1em;">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

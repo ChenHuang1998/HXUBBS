@@ -21,5 +21,143 @@ body {
     float: left;
 }
 .card-body h5{
-    margin-left: 12em;
+    margin-left: 8em;
+}
+.anniu{
+    margin-bottom: 1em
+}
+.anniu button{
+    margin: 0 0.5em;
+}
+.cate-card{
+    height: 200px;
+    margin-top: 1em
+}
+.card-cont{
+    padding: 1em;
+    color: #6c757d;
+}
+.card-title{
+    text-align: center;
+    font-size: 16px;
+}
+.detail{
+    margin-left: 11em;
+    font-size: 10px;
+}
+.text-decoration-none{
+    color: #6c757d;
+    text-decoration: none!important;
+}
+.postcard{
+    background-color: #fff;
+	box-shadow: 5px 5px 15px rgba(187, 199, 214, 0.56);
+    margin-bottom: 2em;
+}
+.post-title{
+    padding: 0.5em;
+    margin-left: 2em;
+}
+.post-content{
+    padding: 1em 1.5em;
+    font-size: 16px;
+    color: #212529;
+    font-weight: 400;
+    text-align: left;
+    line-height: 2em;
+}
+.card-post{
+    height: 300px;
+
+}
+.post-like img{
+    width: 16px;
+    height: 16px;
+}
+.post-like{
+    margin-top: 2em;
+    text-align: center;
+}
+.card-title img{
+    width: 100px;
+    height: 100px;
+}
+.post-other span:nth-child(n+2) {
+    margin-right: 2em;
+    margin-top: 1em;
+}
+.post-comment{
+    margin-top: 2em;
+}
+.post-comment h4{
+    margin-left: 2em;
+}
+.login-comment{
+    margin-left: 4em;
+
+}
+.login-comment textarea{
+    border-radius: 4px;
+    width: 685px;
+    height: 150px;
+    border-color: rgba(91, 91, 113, 0.68);
+}
+.not-login-comment{
+    margin-left: 4em;
+    background-color: #e5e9ef;
+    border-radius: 4px;
+    width: 80%;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+}
+.comment-list{
+    margin-left: 2em;
+}
+.comment-button{
+    margin-top: 1em;
+    margin-right: 8em;
+    float: right;
+
+}
+.comment-content{
+    margin-top: 1em;
+}
+.comment-content img{
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+.comment-content div{
+    margin-left: 8em;
+    margin-bottom: 0.5em;
+}
+.cate-choice{
+    margin-top: 2em;
+    float: left;
+}
+.theme-choice{
+    margin-top: 2em;
+    margin-right: 8em;
+    float: right;
+}
+.panel-body select{
+    width: 300px;
+    height: 30px;
+}
+.publish-title input{
+    margin-left: 3em;
+    width: 83%;
+}
+.publish-content{
+    margin-top: 2em;
+}
+.publish-content textarea{
+    margin-left: 3em;
+    width: 757px;
+}
+.publish-button{
+    float: right;
+    margin-right: 8em;
+    margin-top: 2em;
 }

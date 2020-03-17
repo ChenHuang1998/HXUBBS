@@ -4,14 +4,6 @@
 active
 {% endblock %}
 {% block style %}
-<style>
-.anniu{
-    margin-bottom: 1em
-}
-.anniu button{
-    margin: 0 0.5em;
-}
-</style>
 {% endblock %}
 
 {% block content %}
@@ -24,19 +16,30 @@ active
 
             </ol>
         </div>
-        <div>
+        <div class="row">
             <div class="col-sm-9">
                 <div class="anniu">
                     <button class="btn bg-primary">全部</button>
                     <button class="btn bg-primary">热度</button>
                     <button class="btn bg-primary">评论量</button>
-                    <button class="btn bg-primary pull-right" style="width: 100px">发布帖子</button>
+
                 </div>
                  {% for post in post_list %}
                     <div class="card">
                         <div class="card-body">
                             <img src="/static/imgs/avatar.png" alt="" class="img-circle">
-                            <h5>{{ post.title }}</h5>
+                            <h5><a href="{% url 'postdetail' post.id %}" class="text-decoration-none">{{ post.title }}</a></h5>
+                            <div class="detail">
+                                <span class="glyphicon glyphicon-user" style="color: #7f7f7f"></span>
+                                <span>
+                                    {% if post.author.name %}
+                                        {{ post.author }}
+                                    {% else %}
+                                        {{ post.author.user.username }}
+                                    {% endif %}
+                                </span>
+                                <span style="margin-left: 1em">发表于 {{ post.created_time|date:"Y-m-d H:i" }}</span>
+                            </div>
                         </div>
                     </div>
                 {% empty %}
@@ -45,7 +48,33 @@ active
 
             </div>
             <div class="col-md-3">
+                <a  href="{% url 'publish' %}" class="btn bg-primary btn-block" style="margin-top: 3.5em">发布帖子</a>
+                <div class="card cate-card">
+                    <div class="card-cont">
+                        <div class="card-title">所在版块: {{ category_name }}</div>
+                        <div class="row" style="margin: 1em;">
+                            <div class="col-md-6" style="margin-bottom: 1em">
+                                <div>主题数</div>
+                                <div>{{ category_detail.theme_set.count }}</div>
+                            </div>
+                            <div class="col-md-6" style="margin-bottom: 1em">
+                                <div>帖子数</div>
+                                <div>{{ category_detail.post_num }}</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div>今日发帖</div>
+                                <div>0</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div>今日阅读</div>
+                                <div>0</div>
+                            </div>
 
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

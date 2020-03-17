@@ -1,6 +1,7 @@
-# import requests
-# from lxml import etree
+import requests
+from lxml import etree
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from django.http import JsonResponse
 from bbs.models import *
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -31,17 +32,67 @@ def acc_logout(request):
     return HttpResponseRedirect('/')
 
 
+def register(request):
+    if request.method == 'POST':
+        username = request.POST.get('registerUsername')
+        password = request.POST.get('registerPasswords')
+        user = User.objects.create_user(username=username, password=password)
+        userprofile = UserProfile(user=user)
+        userprofile.save()
+        login(request, user)
+        return HttpResponseRedirect('/')
+    return render(request, 'bbs/register.html')
+
+
+# 版块页
 def category(request):
     category_list = Category.objects.all()
     return render(request, 'bbs/category.html', locals())
 
 
+# 版块详情页
 def caregorydetail(request):
     category_name = request.GET.get('name')
-    category_id = Category.objects.get(name=category_name).pk
-    post_list = Post.objects.filter(category_id=category_id)
-
+    category_detail = Category.objects.get(name=category_name)
+    post_list = Post.objects.filter(category_id=category_detail.pk)
     return render(request, 'bbs/caregorydetail.html', locals())
+
+
+# 帖子详情页
+def postdetail(request, post_id):
+    post = Post.objects.get(id=post_id)
+    return render(request, 'bbs/postdetail.html', locals())
+
+
+# 发表帖子
+def publish(request):
+    category_list = Category.objects.all()
+    if request.method == 'POST':
+        post_category = request.POST.get('post-category')
+        post_theme = request.POST.get('post-theme')
+        title = request.POST.get('post-title')
+        post_content = request.POST.get('post-content')
+        user_id = request.user.id
+        post = Post()
+        post.category = Category.objects.get(id=post_category)
+        post.theme = Theme.objects.get(name=post_theme)
+        post.title = title
+        post.content = post_content
+        post.author = UserProfile.objects.get(id=user_id)
+        post.save()
+        return HttpResponseRedirect('/')
+
+    return render(request, 'bbs/publish_post.html', locals())
+
+
+# 版块 主题联动选择
+def linked(request):
+    category_id = request.GET.get('category_id')
+    theme_list = Theme.objects.filter(category_id=category_id).values('name')
+    # print(theme_list)
+    data = {'theme_list': list(theme_list)}
+    return JsonResponse(data)
+
 
 # def addpost(request):
 #     for i in range(6):

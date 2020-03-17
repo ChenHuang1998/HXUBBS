@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="/static/style.default.css" id="theme-stylesheet">
   </head>
   <body>
     <div class="page login-page">
@@ -24,7 +24,7 @@
                   <div class="logo">
                     <h1>欢迎注册</h1>
                   </div>
-                  <p>金屹电源远程管理系统</p>
+                  <p>河西学院论坛</p>
                 </div>
               </div>
             </div>
@@ -33,6 +33,8 @@
               <div class="form d-flex align-items-center">
                 <div class="content">
                     <div class="form-group">
+                        <form action="" method="post">
+                            {% csrf_token %}
                       <input id="register-username" class="input-material" type="text" name="registerUsername" placeholder="请输入用户名/姓名" >
 								      <div class="invalid-feedback">
 								        	用户名必须在2~10位之间
@@ -51,8 +53,9 @@
 								      </div>
                     </div>
                     <div class="form-group">
-                      <button id="regbtn" type="button" name="registerSubmit" class="btn btn-primary">注册</button>
+                      <button id="regbtn" type="submit" name="registerSubmit" class="btn btn-primary">注册</button>
                     </div>
+                    </form>
                   <small>已有账号?</small><a href="login.html" class="signup">&nbsp;登录</a>
                 </div>
               </div>
