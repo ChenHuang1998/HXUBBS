@@ -120,18 +120,20 @@ body {
     float: right;
 
 }
-.comment-content{
-    margin-top: 1em;
+.comment-list h4{
+    margin-bottom: 2em;
 }
 .comment-content img{
     width: 60px;
     height: 60px;
     float: left;
+    margin-left: 2em;
 }
-.comment-content div{
+.comment-content div:not(:last-child){
     margin-left: 8em;
     margin-bottom: 0.5em;
 }
+
 .cate-choice{
     margin-top: 2em;
     float: left;

@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
-
-
+{% load staticfiles %}
 {% block style %}
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1690394_u7ixcnzpp2m.css">
 {% endblock %}
@@ -42,15 +41,20 @@
                     <div class="post-comment">
                         <h4>发表评论</h4>
                         {% if request.user.is_authenticated %}
-                            <div class="login-comment">
-                                <textarea></textarea>
-                            </div>
-                            <div class="comment-button">
-                                <button class="btn btn-success">发表评论</button>
-                            </div>
+                            <form action="{% url 'update_comment' %}" method="post">
+                                <div class="login-comment">
+                                        {% csrf_token %}
+                                        <textarea name="text" id="comment-text" class="form-control"></textarea>
+                                        <input type="hidden" name="object_id" value="{{ post.id }}">
+                                        <input type="hidden" name="content_type" value="post">
+                                </div>
+                                <div class="comment-button">
+                                    <button  type="submit" class="btn btn-success">发表评论</button>
+                                </div>
+                            </form>
                         {% else %}
                             <div class="not-login-comment">
-                                <div>请先 <button class="btn btn-primary">登录</button> 后发表评论</div>
+                                <div>请先 <a href="{% url 'login' %}?from={{ request.get_full_path }}" class="btn btn-primary">登录</a> 后发表评论</div>
                             </div>
                             <div class="comment-button">
                                 <button class="btn btn-success disabled">发表评论</button>
@@ -62,37 +66,38 @@
                     <hr>
                     <div class="comment-list">
                         <h4>评论列表</h4>
-                        <div class="comment-content">
-                            <img src="/static/imgs/default.png" alt="" class="img-circle">
-                            <div class="comment-user">这是评论姓名</div>
-                            <div class="comment-detail">这是评论内容</div>
-                            <div class="comment-date">2020-3-10 17:27</div>
-                            <div><hr></div>
-                            <div style="clear: both"></div>
-                        </div>
+                        {% for comment in comments %}
+                            <div class="comment-content">
+                                <img src="/static/imgs/default.png" alt="" class="img-circle">
+                                <div class="comment-user">{{ comment.user.name }}</div>
+                                <div class="comment-detail">{{ comment.text }}</div>
+                                <div class="comment-date">{{ comment.comment_time|date:'Y-m-d H:i' }}</div>
+                                <div><hr></div>
+                                <div style="clear: both"></div>
+                            </div>
+                        {% empty %}
+                            暂无评论
+                        {% endfor %}
 
-                        <div class="comment-content">
-                            <img src="/static/imgs/default.png" alt="" class="img-circle">
-                            <div class="comment-user">这是评论姓名</div>
-                            <div class="comment-detail">这是评论内容</div>
-                            <div class="comment-date">2020-3-10 17:27</div>
-                            <div><hr></div>
-                            <div style="clear: both"></div>
-                        </div>
 
-                        <div class="comment-content">
-                            <img src="/static/imgs/default.png" alt="" class="img-circle">
-                            <div class="comment-user">这是评论姓名</div>
-                            <div class="comment-detail">这是评论内容</div>
-                            <div class="comment-date">2020-3-10 17:27</div>
-                            <hr>
-                            <div style="clear: both"></div>
-                        </div>
+                    </div>
+
+
+
+
+{#                        <div class="comment-content">#}
+{#                            <img src="/static/imgs/default.png" alt="" class="img-circle">#}
+{#                            <div class="comment-user">这是评论姓名</div>#}
+{#                            <div class="comment-detail">这是评论内容</div>#}
+{#                            <div class="comment-date">2020-3-10 17:27</div>#}
+{#                            <div><hr></div>#}
+{#                            <div style="clear: both"></div>#}
+{#                        </div>#}
 
                     </div>
 
                 </div>
-            </div>
+
 
             <div class="col-md-3">
                 <div class="card card-post">

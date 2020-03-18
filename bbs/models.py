@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 from django.db import models
 # Create your models here.
 
@@ -7,7 +8,7 @@ class Post(models.Model):
     title = models.CharField(max_length=128, verbose_name='标题')
     category = models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name='版块')
     theme = models.ForeignKey('Theme', on_delete=models.CASCADE, default=1)
-    content = models.TextField(verbose_name='帖子内容')
+    content = RichTextField(verbose_name='帖子内容')
     author = models.ForeignKey('UserProfile', on_delete=models.CASCADE, verbose_name='作者')
     created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     modify_time = models.DateTimeField(auto_now=True, verbose_name='修改时间')

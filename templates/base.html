@@ -48,11 +48,7 @@
                       <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                              aria-expanded="false">
-                              {% if  request.user.userprofile.name %}
-                              {{ request.user.userprofile.name }}
-                              {% else %}
                               {{ request.user }}
-                              {% endif %}
                               <span class="caret"></span></a>
                           <ul class="dropdown-menu">
                               <li><a href="#">个人主页</a></li>
@@ -62,7 +58,7 @@
                   </ul>
               {% else %}
                   <ul class="nav navbar-nav navbar-right" style="margin-right: 1em">
-                      <li><a href="{% url 'login' %}">登录</a></li>
+                      <li><a href="{% url 'login' %}?from={{ request.get_full_path }}">登录</a></li>
                       <li><a href="#">注册</a></li>
                   </ul>
               {% endif %}
