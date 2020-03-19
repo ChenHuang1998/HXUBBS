@@ -7,6 +7,7 @@ from django.contrib.contenttypes.models import ContentType
 from bbs.models import *
 from comment.models import Comment
 from bbs.forms import LoginForm, RegForm
+from comment.forms import CommentForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -83,7 +84,10 @@ def caregorydetail(request):
 def postdetail(request, post_id):
     post = Post.objects.get(id=post_id)
     post_content_type = ContentType.objects.get_for_model(post)
-    comments = Comment.objects.filter(content_type=post_content_type, object_id=post_id)
+    comments = Comment.objects.filter(content_type=post_content_type, object_id=post_id, parent=None).order_by('-comment_time')
+    data = {'content_type': post_content_type.model,'object_id': post_id,'reply_comment_id': 0}
+    comment_form = CommentForm(initial=data)
+    reply_form = CommentForm(initial=data)
     return render(request, 'bbs/postdetail.html', locals())
 
 

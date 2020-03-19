@@ -96,12 +96,12 @@ body {
     margin-left: 4em;
 
 }
-.login-comment textarea{
-    border-radius: 4px;
-    width: 685px;
-    height: 150px;
-    border-color: rgba(91, 91, 113, 0.68);
-}
+/*.login-comment textarea{*/
+/*    border-radius: 4px;*/
+/*    width: 685px;*/
+/*    height: 150px;*/
+/*    border-color: rgba(91, 91, 113, 0.68);*/
+/*}*/
 .not-login-comment{
     margin-left: 4em;
     background-color: #e5e9ef;
@@ -123,14 +123,35 @@ body {
 .comment-list h4{
     margin-bottom: 2em;
 }
-.comment-content img{
+.comment-head-img{
     width: 60px;
     height: 60px;
     float: left;
     margin-left: 2em;
 }
+.comment-date{
+    color: #99a2aa;
+    font-size: 12px;
+    margin-left: 9em!important;
+}
+.reply-date{
+    color: #99a2aa;
+    font-size: 12px;
+    margin-left: 12em!important;
+}
+.reply-head-img{
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-left: 6em;
+}
+
 .comment-content div:not(:last-child){
     margin-left: 8em;
+    margin-bottom: 0.5em;
+}
+.reply-content div:not(:last-child){
+    margin-left: 10em;
     margin-bottom: 0.5em;
 }
 
