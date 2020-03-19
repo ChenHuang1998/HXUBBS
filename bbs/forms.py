@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import authenticate
+from bbs.models import UserProfile
 
 
 class LoginForm(forms.Form):
@@ -15,3 +16,29 @@ class LoginForm(forms.Form):
         else:
             self.cleaned_data['user'] = user
         return self.cleaned_data
+
+
+class RegForm(forms.Form):
+    username = forms.CharField(max_length=16,
+                               min_length=3,
+                               widget=forms.TextInput(
+                                   attrs={'class': 'input-material', 'placeholder': '请输入3-16位的用户名'}))
+    password = forms.CharField(min_length=6,
+                               widget=forms.PasswordInput(
+                                   attrs={'class': 'input-material', 'placeholder': '请输入密码'}))
+    password_again = forms.CharField(min_length=6,
+                                     widget=forms.PasswordInput(
+                                         attrs={'class': 'input-material', 'placeholder': '再输入一次密码'}))
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if UserProfile.objects.filter(name=username).exists():
+            raise forms.ValidationError('用户名已存在')
+        return username
+
+    def clean_password_again(self):
+        password = self.cleaned_data['password']
+        password_again = self.cleaned_data['password_again']
+        if password != password_again:
+            raise forms.ValidationError('两次密码不一致')
+        return password_again

@@ -6,7 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.contenttypes.models import ContentType
 from bbs.models import *
 from comment.models import Comment
-from bbs.forms import LoginForm
+from bbs.forms import LoginForm, RegForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -48,14 +48,21 @@ def acc_logout(request):
 
 def register(request):
     if request.method == 'POST':
-        username = request.POST.get('registerUsername')
-        password = request.POST.get('registerPasswords')
-        user = User.objects.create_user(username=username, password=password)
-        userprofile = UserProfile(user=user, name=username)
-        userprofile.save()
-        login(request, user)
-        return redirect('/')
-    return render(request, 'bbs/register.html')
+        reg_form = RegForm(request.POST)
+        if reg_form.is_valid():
+            username = reg_form.cleaned_data['username']
+            password = reg_form.cleaned_data['password']
+            # 创建用户
+            user = User.objects.create_user(username=username, password=password)
+            user_profile = UserProfile(user=user, name=username)
+            user_profile.save()
+            # 登录用户
+            user_login = authenticate(username=username, password=password)
+            login(request, user_login)
+            return redirect(request.GET.get('from'), '/')
+    else:
+        reg_form = RegForm()
+    return render(request, 'bbs/register.html',locals())
 
 
 # 版块页
