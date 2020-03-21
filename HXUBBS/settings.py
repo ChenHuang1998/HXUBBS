@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
-    'mptt',
     'bbs',
     'comment',
 ]
@@ -148,3 +148,20 @@ CKEDITOR_CONFIGS = {
         'resize_enabled': False,
     }
 }
+SIMPLEUI_HOME_INFO = False
+# SIMPLEUI_LOGO = '/static/default.png'
+SIMPLEUI_CONFIG = {
+    'system_keep': False,
+    'menu_display': ['首页', '帖子模型', '评论模型', '认证和授权'],
+}
+SIMPLEUI_ICON = {
+    '帖子模型': 'fa fa-blog',
+    '主题': 'fab fa-ethereum',
+    '帖子': 'far fa-envelope',
+    '版块': 'fas fa-th-large',
+    '评论': 'far fa-comment-dots',
+    '评论模型': 'far fa-comment-dots',
+
+}
+
+
