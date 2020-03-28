@@ -6,7 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.contenttypes.models import ContentType
 from bbs.models import *
 from comment.models import Comment
-from bbs.forms import LoginForm, RegForm
+from bbs.forms import LoginForm, RegForm, PublishForm
 from comment.forms import CommentForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -94,20 +94,24 @@ def postdetail(request, post_id):
 # 发表帖子
 def publish(request):
     category_list = Category.objects.all()
+    pubform = PublishForm()
     if request.method == 'POST':
+        pubform = PublishForm(request.POST)
+        if pubform.is_valid():
+            content = pubform.cleaned_data['content']
         post_category = request.POST.get('post-category')
         post_theme = request.POST.get('post-theme')
         title = request.POST.get('post-title')
-        post_content = request.POST.get('post-content')
+        post_content = request.POST.get('editor1')
         user_id = request.user.id
         post = Post()
         post.category = Category.objects.get(id=post_category)
-        post.theme = Theme.objects.get(name=post_theme)
+        post.theme = Theme.objects.get(name=post_theme, category=post_category)
         post.title = title
-        post.content = post_content
+        post.content = content
         post.author = UserProfile.objects.get(id=user_id)
         post.save()
-        return HttpResponseRedirect('/')
+        return redirect('/')
 
     return render(request, 'bbs/publish_post.html', locals())
 

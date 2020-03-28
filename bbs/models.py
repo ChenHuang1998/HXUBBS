@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 # Create your models here.
 
@@ -8,13 +8,14 @@ class Post(models.Model):
     title = models.CharField(max_length=128, verbose_name='标题')
     category = models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name='版块')
     theme = models.ForeignKey('Theme', on_delete=models.CASCADE, default=1)
-    content = RichTextField(verbose_name='帖子内容')
+    content = RichTextUploadingField(verbose_name='帖子内容')
     author = models.ForeignKey('UserProfile', on_delete=models.CASCADE, verbose_name='作者')
     created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     modify_time = models.DateTimeField(auto_now=True, verbose_name='修改时间')
     priority = models.IntegerField(verbose_name='是否置顶',default=0)
 
     class Meta:
+        ordering = ['-created_time']
         verbose_name = "帖子"  # 表名改成中文名
         verbose_name_plural = verbose_name
 
@@ -38,6 +39,7 @@ class Category(models.Model):
     post_num = models.IntegerField(default=0, verbose_name='帖子数')
 
     class Meta:
+
         verbose_name = "版块"  # 表名改成中文名
         verbose_name_plural = verbose_name
 

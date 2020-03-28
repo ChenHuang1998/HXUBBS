@@ -66,6 +66,14 @@ body {
     text-align: left;
     line-height: 2em;
 }
+.post-content p {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    display: block;
+
+}
+
 .card-post{
     height: 300px;
 
@@ -110,6 +118,24 @@ body {
     height: 80px;
     line-height: 80px;
     text-align: center;
+}
+div#reply_content_container{
+    border: 1px solid #ccc;
+    width: 687px;
+    background-color: #F8F8F8;
+    border-bottom: none;
+    overflow: hidden;
+    padding: 1em 1em 0.5em;
+}
+div#reply_content_container p{
+    float: left;
+}
+.reply-user-detail span:first-child{
+    float: left;
+
+}
+.reply-user-detail span p{
+    margin-left: 9em;
 }
 .comment-list{
     margin-left: 2em;
@@ -175,8 +201,9 @@ body {
 }
 .publish-content{
     margin-top: 2em;
+    width: 757px;
 }
-.publish-content textarea{
+.publish-content .django-ckeditor-widget{
     margin-left: 3em;
     width: 757px;
 }

@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 
+
+{% endblock %}
 {% block content %}
     <div class="container">
         <div class="row">
@@ -32,14 +38,41 @@
                                 <div style="clear: both"></div>
                                 <div class="publish-title">
                                     <label style="float: left">标题:</label>
-                                    <input type="text" class="form-control" name="post-title">
+                                    <input type="text" id="post-title" class="form-control" name="post-title">
                                 </div>
                                 <div class="publish-content">
-                                    <label style="float: left">内容:</label>
-                                    <textarea class="form-control" name="post-content"></textarea>
+                                    <label style="float: left">内容：</label>
+                                    {{ pubform.media }}
+                                    {{ pubform.as_p }}
+                                    <script>
+                                        CKEDITOR.on('dialogDefinition', function(ev) {
+                                            var dd = ev.data.definition;
+
+                                            if(ev.data.name == 'image') {
+                                                dd.onLoad = function () {
+                                                    var dialog = CKEDITOR.dialog.getCurrent();
+                                                    // make upload default tab
+                                                    this.selectPage('Upload');
+                                                    // hide unwanted tab
+                                                    dialog.hidePage( 'Link' );
+                                                    dialog.hidePage( 'advanced' );
+                                                    dialog.hidePage('info');
+
+                                                    var uploadTab = dd.getContents('Upload');
+                                                    var uploadButton = uploadTab.get('uploadButton');
+                                                    uploadButton['filebrowser']['onSelect'] = function( fileUrl, errorMessage ) {
+                                                        dialog.getContentElement('info', 'txtUrl').setValue(fileUrl);
+                                                        $(".cke_dialog_ui_button_ok span").click();
+                                                    }
+                                                };
+                                            }
+                                        })
+                                    </script>
                                 </div>
+
                                 <div class="publish-button">
-                                    <button class="btn - btn-success">确定发表</button>
+                                    <span id="error_publish" style="margin-right: 4em;color: red"></span>
+                                    <button class="btn - btn-success" id="confirm_btn">确定发表</button>
                                 </div>
                             </form>
                         </div>
@@ -52,13 +85,18 @@
         </div>
 
     </div>
+
 {% endblock %}
 
 {% block script %}
     <script>
         $('#post-category').change(function () {
             var category_id = $(this).val();
-            {#console.log(category_id);#}
+            if(category_id==''){
+                $('#post-theme').html('');
+                return false
+            }
+            console.log(category_id);
             $.ajax({
                 url: '/linked/?category_id='+category_id,
                 type: 'get',
@@ -80,5 +118,25 @@
                 }
             })
         })
+    </script>
+    <script>
+    $('#confirm_btn').click(function () {
+        var cate = $('#post-category').val();
+        var title = $('#post-title').val();
+        if(cate==''){
+            $('#error_publish').text('版块，主题不能为空');
+            return false
+        }
+        else if(title.trim()==''){
+            $('#error_publish').text('标题不能为空');
+            return false
+        }
+        else if(CKEDITOR.instances['id_content'].document.getBody().getText().trim()==''){
+            $('#error_publish').text('内容不能为空');
+            return false;
+        }
+
+
+    })
     </script>
 {% endblock %}

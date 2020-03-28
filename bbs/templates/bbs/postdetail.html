@@ -1,10 +1,21 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load comment_tags %}
+{% block title %}
+河西学院BBS站|帖子详情
+{% endblock %}
 {% block style %}
 
     <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
     <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    <style>
+    p {
+    margin: 10px 0 15px;
+    }
+    img{
+        max-width: 500px;
+    }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -29,7 +40,7 @@
                     </div>
                     <hr>
                     <div class="post-content">
-                        {{ post.content }}
+                        {{ post.content|safe }}
                     </div>
                     <div class="post-like">
                         <button class="btn btn-info">
@@ -167,7 +178,7 @@
                     // 插入数据
                     if($('#reply_comment_id').val()=='0'){
                         // 插入评论
-                        var comment_html = '<div id="root_'+data['pk']+'" >\n' +
+                        var comment_html = '<div id="root_'+data['pk']+'">\n' +
                     '                                    <img src="/static/imgs/default.png" alt="" class="img-circle comment-head-img">\n' +
                     '                                    <div class="comment-user" style="margin-left:8em;margin-bottom:0.5em">'+data['user_name']+'</div>\n' +
                     '                                    <div id="comment_'+data['pk']+'" class="comment-detail" style="margin-left:8em;margin-bottom:0.5em">'+data['text']+'</div>\n' +
@@ -178,12 +189,13 @@
                     '                                    <div style="clear: both"></div>\n' +
                     '                                </div><hr>';
                     $('#comment_list').prepend(comment_html);
+                    $('#comment_error').text('评论成功')
 
                     }else{
                         // 插入回复
-                        var reply_html = '<div class="reply-content">\n' +
+                        var reply_html = '<div >\n' +
                         '                                        <img src="/static/imgs/default.png" alt="" class="img-circle reply-head-img">\n' +
-                        '                                        <div class="reply-user-detail">\n' +
+                        '                                        <div class="reply-user-detail" style="margin-left:10em">\n' +
                         '                                            <span>'+data['user_name']+' 回复 '+data['reply_to']+':</span>\n' +
                         '                                            <span id="comment_'+data['pk']+'">'+data['text']+'</span>\n' +
                         '                                        </div>\n' +
@@ -194,7 +206,7 @@
                         '                                        <div style="clear: both"></div>\n' +
                         '                                    </div>';
                         $("#root_"+data['root_pk']).append(reply_html)
-
+                        $('#comment_error').text('回复成功')
 
                     }
 
@@ -202,7 +214,8 @@
                     CKEDITOR.instances['id_text'].setData('');
                     $('#reply_content_container').hide();
                     $('#reply_comment_id').val('0');
-                    $('#no_comment').remove()
+                    $('#no_comment').remove();
+
                 }else{
                     // 显示错误信息
                     $('#comment_error').text(data['message'])
@@ -216,6 +229,7 @@
         return false;
     });
     function reply(reply_comment_id) {
+        $('#comment_error').text('');
         // s设置回复父级id值
         $('#reply_comment_id').val(reply_comment_id);
         var html = $('#comment_'+ reply_comment_id).html();

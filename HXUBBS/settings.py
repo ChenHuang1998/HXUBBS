@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+    'ckeditor_uploader',
     'bbs',
     'comment',
 ]
@@ -125,8 +126,12 @@ USE_TZ = False
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+# STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CKEDITOR_UPLOAD_PATH = 'upload/'
 
 CKEDITOR_CONFIGS = {
     'default':{},
@@ -143,6 +148,18 @@ CKEDITOR_CONFIGS = {
         'width': '685px',
         'height': '200px',
         # tab键转换空格数
+        'tabSpaces': 4,
+        'removePlugins': 'elementspath',
+        'resize_enabled': False,
+    },
+    'publish': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic','Smiley', 'TextColor', 'Image', 'SpecialChar'],
+
+        ],
+        'width': 'auto',
+        'height': '280',
         'tabSpaces': 4,
         'removePlugins': 'elementspath',
         'resize_enabled': False,

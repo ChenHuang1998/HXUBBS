@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth import authenticate
-from bbs.models import UserProfile
-
-
+from bbs.models import UserProfile, Post
+from ckeditor_uploader.fields import RichTextUploadingFormField, RichTextUploadingField
+from ckeditor.widgets import CKEditorWidget
 class LoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input-material', 'placeholder': '请输入用户名'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input-material', 'placeholder': '密码'}))
@@ -42,3 +42,7 @@ class RegForm(forms.Form):
         if password != password_again:
             raise forms.ValidationError('两次密码不一致')
         return password_again
+
+
+class PublishForm(forms.Form):
+    content = RichTextUploadingFormField(label='', config_name='publish', error_messages={'required': '内容不能为空'})
