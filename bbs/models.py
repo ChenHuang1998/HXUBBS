@@ -63,7 +63,10 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=64, verbose_name='用户名')
     signature = models.CharField(max_length=128, blank=True, null=True, verbose_name='个性签名')
-    image = models.ImageField(verbose_name='头像', default='imgs/default.png')
+    gender = models.IntegerField(null=True, blank=True, verbose_name='性别')
+    college = models.CharField(max_length=16, blank=True, null=True, verbose_name='学院')
+    grade = models.CharField(max_length=16, blank=True, null=True, verbose_name='班级')
+    image = models.ImageField(verbose_name='头像', upload_to='head_img', default='default.png')
 
     class Meta:
         verbose_name = "自定义用户"  # 表名改成中文名

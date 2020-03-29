@@ -33,4 +33,5 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('bbs.urls')),
     path('comment/', include('comment.urls')),
+    path('user/', include('userinfo.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

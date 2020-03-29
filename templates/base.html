@@ -52,7 +52,7 @@
                               {{ request.user }}
                               <span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                              <li><a href="#">个人主页</a></li>
+                              <li><a href="{% url 'userinfo' %}?name={{ request.user }}">个人主页</a></li>
                               <li><a href="{% url 'logout' %}">退出</a></li>
                           </ul>
                       </li>

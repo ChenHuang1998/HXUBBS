@@ -1,6 +1,6 @@
 import requests
 from lxml import etree
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect,get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.contenttypes.models import ContentType
@@ -82,7 +82,7 @@ def caregorydetail(request):
 
 # 帖子详情页
 def postdetail(request, post_id):
-    post = Post.objects.get(id=post_id)
+    post = get_object_or_404(Post, id=post_id)
     post_content_type = ContentType.objects.get_for_model(post)
     comments = Comment.objects.filter(content_type=post_content_type, object_id=post_id, parent=None).order_by('-comment_time')
     data = {'content_type': post_content_type.model,'object_id': post_id,'reply_comment_id': 0}
