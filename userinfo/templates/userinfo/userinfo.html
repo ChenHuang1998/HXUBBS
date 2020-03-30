@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% load userinfo_tag %}
+{% block style %}
+    <style>
+    body{
+        background-image: url("/static/imgs/bg.jpg");
+    }
+    .userinfo-head img{
+        width: 100px;
+        height: 100px;
+    }
+    .info div{
+        margin-bottom: 2em;
+    }
+    .info div input{
+        width: 300px;
+    }
+    textarea{
+        margin-bottom: -5.5em;
+        width: 270px!important;
+        height: 90px!important;
+    }
+    </style>
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div>
+                    <h4>{{ user_info.name }} 的个人资料</h4>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="userinfo-head" style="margin-left: 1em">
+                            <img src="/media/head_img/{{ user_info.image }}" alt="" class="img-circle" id="img-show" data-toggle="tooltip" data-placement="bottom" title="点击更换头像">
+                            <div style="margin-top: 1em;margin-left: 0.5em"><button class="btn btn-info" id="img-btn">修改头像</button></div>
+                            <input type="file" id="img-upload" style="display: none;" onchange="uploadimg()">
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="info show" id="info">
+                            <div>
+                                昵称 : {{ user_info.name }}
+                                <a class="pull-right text-decoration-none" href="javascript:change_info()">修改资料</a>
+                            </div>
+                            <div>
+                                个性签名 : {{ user_info.signature|info_is_none }}
+                            </div>
+                            <div>
+                                性别 :{{ user_info.gender|info_gender }}
+                            </div>
+                            <div>
+                                学院 : {{ user_info.college|info_is_none }}
+                            </div>
+                            <div>
+                                班级 : {{ user_info.grade|info_is_none }}
+                            </div>
+                        </div>
+                        
+                        <div class="info hidden" id="modify_info">
+                            <form action="">
+                                {% csrf_token %}
+                            <div>
+                                <span>昵称：</span>
+                                <label>
+                                    <input type="text" value="{{ user_info.name }}" class="form-control" id="nickname">
+
+                                </label>
+                                 <span id="error_nickname" class="text-danger" style="margin-left: 1em"></span>
+{#                                <a class="pull-right text-decoration-none" href="">修改资料</a>#}
+                            </div>
+                            <div>
+                                <span>个性签名：</span>
+                                <label>
+                                    <textarea class="form-control"  id="signature"></textarea>
+                                </label>
+                            </div>
+
+                            <div style="margin-top: 6em">
+                                <span>性别：</span>
+                                <label class="radio-inline">
+                                    <input type="radio" value="1" name="gender">男
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" value="0" name="gender">女
+                                </label>
+
+                            </div>
+                            <div>
+                                <span>学院：</span>
+                                <label>
+                                    <input type="text" value="{{ user_info.college|info_is_none }}" class="form-control" id="college">
+                                </label>
+                            </div>
+                            <div>
+                                <span>班级：</span>
+                                <label>
+                                    <input type="text" value="{{ user_info.grade|info_is_none }}" class="form-control" id="grade">
+                                </label>
+                            </div>
+                            <div>
+                                <a class="btn btn-default" style="margin-left: 5em" href="javascript:cancel_modify()">取消</a>
+                                <a class="btn btn-danger" style="margin-left: 3em" href="javascript:confirm_modify()">确定修改</a>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <h3>{{ user_info.name }}</h3>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+
+        })
+    </script>
+    <script>
+    $('#img-show').click(function () {
+        $('#img-upload').click()
+    });
+    $('#img-btn').click(function () {
+        $('#img-upload').click()
+    })
+    function uploadimg() {
+        var img_file = $('#img-upload')[0].files[0];
+        console.log(img_file.name);
+        var reader_file = new FileReader();
+        reader_file.readAsDataURL(img_file);
+        reader_file.onload = function (ev) {
+            $('#img-show').attr('src', ev.target.result);
+            var formdata = new FormData();
+            formdata.append('img_name', img_file.name);
+            formdata.append('img_file', img_file);
+            formdata.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+            $.ajax({
+                url: '{% url 'modify_img' %}',
+                type: 'POST',
+                data: formdata,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    alert(data);
+                }
+            })
+        }
+
+
+    }
+    </script>
+    <script>
+    function change_info() {
+        $('#info').removeClass('show').addClass('hidden');
+        $('#signature').val('{{ user_info.signature|info_is_none }}');
+        $('#modify_info').removeClass('hidden').addClass('show');
+    }
+    function cancel_modify() {
+        $('#modify_info').removeClass('show').addClass('hidden');
+        $('#info').removeClass('hidden').addClass('show');
+        return false
+    }
+    </script>
+    <script>
+    function confirm_modify() {
+        var nickname = $('#nickname').val();
+        var signature = $('#signature').val();
+        var gender = $("input[name='gender']:checked").val();
+        var grade = $('#grade').val();
+        var college = $('#college').val();
+        if ($.trim(nickname)==''){
+            $('#error_nickname').text('昵称不能为空');
+            return false
+        }
+        else{
+            $.ajax({
+                url:'{% url 'modify_info' %}',
+                type: 'POST',
+                data: {'userprofile': '{{ request.user.userprofile }}',
+                        'nickname':nickname,
+                        'signature':signature,
+                        'gender':gender,
+                        'grade':grade,
+                        'college':college,
+                        'csrfmiddlewaretoken':'{{ csrf_token }}'},
+                dataType:'json',
+                success:function (data) {
+                    console.log(data)
+                    if (data['status']==200){
+                        window.location.href = "{% url 'userinfo' %}?name="+nickname
+                    }
+
+                }
+
+            });
+
+        }
+
+    }
+    </script>
+{% endblock %}

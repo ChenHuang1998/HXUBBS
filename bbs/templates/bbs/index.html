@@ -13,7 +13,7 @@ active
             {% for post in post_list %}
             <div class="card">
                 <div class="card-body">
-                    <img src="/static/imgs/avatar.png" alt="" class="img-circle">
+                    <img src="/media/head_img/{{ post.author.image }}" alt="" class="img-circle">
                     <h5><a href="{% url 'postdetail' post.id %}">{{ post.title }}</a></h5>
                     <div class="detail">
                         <span class="glyphicon glyphicon-user" style="color: #7f7f7f"></span>
