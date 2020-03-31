@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48fc4504-139d-4012-b951-eef58be0f1a9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/HXUBBS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/HXUBBS/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HXUBBS/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/HXUBBS/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bbs/templates/bbs/postdetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bbs/templates/bbs/postdetail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/likes/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/likes/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/likes/templatetags/likes_tags.py" beforeDir="false" afterPath="$PROJECT_DIR$/likes/templatetags/likes_tags.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/likes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/likes/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/likes/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="32" column="106" selection-start-line="32" selection-start-column="106" selection-end-line="32" selection-end-column="106" />
+            <state relative-caret-position="1386">
+              <caret line="99" column="74" selection-start-line="99" selection-start-column="74" selection-end-line="99" selection-end-column="74" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -71,37 +72,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/likes_likecount">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/bbs_userprofile">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/likes_likerecord">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/likes/templatetags/likes_tags.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+            <state relative-caret-position="299">
+              <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -124,8 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/likes/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="317">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -133,15 +107,17 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bbs/templates/bbs/postdetail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="193" column="33" lean-forward="true" selection-start-line="193" selection-start-column="33" selection-end-line="193" selection-end-column="33" />
+            <state relative-caret-position="383">
+              <caret line="164" column="44" selection-start-line="164" selection-start-column="44" selection-end-line="164" selection-end-column="44" />
               <folding>
                 <element signature="e#2644#2665#0#HTML" expanded="true" />
-                <element signature="e#8803#12756#0#HTML" />
-                <element signature="e#12796#13218#0#HTML" />
+                <element signature="e#4360#6679#0#HTML" />
+                <element signature="e#7879#8297#0#HTML" />
+                <element signature="e#8344#8741#0#HTML" />
+                <element signature="e#8752#13228#0#HTML" />
               </folding>
             </state>
           </provider>
@@ -150,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="89" column="15" lean-forward="true" selection-start-line="89" selection-start-column="15" selection-end-line="89" selection-end-column="15" />
+            <state relative-caret-position="363">
+              <caret line="91" column="10" lean-forward="true" selection-start-line="91" selection-start-column="10" selection-end-line="91" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -222,11 +198,11 @@
         <option value="$PROJECT_DIR$/userinfo/templates/userinfo/userinfo.html" />
         <option value="$PROJECT_DIR$/userinfo/templatetags/userinfo_tag.py" />
         <option value="$PROJECT_DIR$/bbs/templates/bbs/index.html" />
-        <option value="$PROJECT_DIR$/likes/models.py" />
         <option value="$PROJECT_DIR$/HXUBBS/settings.py" />
         <option value="$PROJECT_DIR$/HXUBBS/urls.py" />
         <option value="$PROJECT_DIR$/likes/urls.py" />
         <option value="$PROJECT_DIR$/static/index.css" />
+        <option value="$PROJECT_DIR$/likes/models.py" />
         <option value="$PROJECT_DIR$/likes/templatetags/likes_tags.py" />
         <option value="$PROJECT_DIR$/bbs/templates/bbs/postdetail.html" />
         <option value="$PROJECT_DIR$/likes/views.py" />
@@ -353,22 +329,23 @@
       <workItem from="1582976698817" duration="6703000" />
       <workItem from="1583153085513" duration="29741000" />
       <workItem from="1583901784316" duration="48409000" />
-      <workItem from="1584355212017" duration="135380000" />
+      <workItem from="1584355212017" duration="139544000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225663000" />
+    <option name="totallyTimeSpent" value="229827000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17124394" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32876712" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49919224" visible="true" weight="0.32876712" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49919224" visible="true" weight="0.13150685" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.28219178" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -729,55 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="89" column="15" lean-forward="true" selection-start-line="89" selection-start-column="15" selection-end-line="89" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/likes/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/likes/templatetags/likes_tags.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bbs/templates/bbs/postdetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="193" column="33" lean-forward="true" selection-start-line="193" selection-start-column="33" selection-end-line="193" selection-end-column="33" />
-          <folding>
-            <element signature="e#2644#2665#0#HTML" expanded="true" />
-            <element signature="e#8803#12756#0#HTML" />
-            <element signature="e#12796#13218#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/likes/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="32" column="106" selection-start-line="32" selection-start-column="106" selection-end-line="32" selection-end-column="106" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/likes_likerecord">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -792,6 +720,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/bbs_userprofile">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/likes_likecount">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -799,10 +734,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/bbs_userprofile">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/likes/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="91" column="10" lean-forward="true" selection-start-line="91" selection-start-column="10" selection-end-line="91" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/likes/templatetags/likes_tags.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/likes/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1386">
+          <caret line="99" column="74" selection-start-line="99" selection-start-column="74" selection-end-line="99" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bbs/templates/bbs/postdetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="164" column="44" selection-start-line="164" selection-start-column="44" selection-end-line="164" selection-end-column="44" />
+          <folding>
+            <element signature="e#2644#2665#0#HTML" expanded="true" />
+            <element signature="e#4360#6679#0#HTML" />
+            <element signature="e#7879#8297#0#HTML" />
+            <element signature="e#8344#8741#0#HTML" />
+            <element signature="e#8752#13228#0#HTML" />
+          </folding>
         </state>
       </provider>
     </entry>

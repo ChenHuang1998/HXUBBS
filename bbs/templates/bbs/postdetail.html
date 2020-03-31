@@ -45,12 +45,12 @@
                     </div>
                     <div class="post-like">
                         <button class="btn btn-info"  onclick="like(this, 'post', {{ post.id }})" data-toggle="tooltip" data-placement="left" title="点个赞">
-                            <i class="iconfont icon-dianzan {% get_like_status post %}" ></i>
-                            <span class="like-num {% get_like_status post %}" >{% get_like_count post %}</span>
+                            <i id="like_icon" class="iconfont icon-dianzan {% get_like_status post %}" ></i>
+                            <span id="like_num" class="like-num {% get_like_status post %}" >{% get_like_count post %}</span>
                         </button>
                         <button class="btn btn-info"  onclick="unlike(this, 'post', {{ post.id }})" data-toggle="tooltip" data-placement="right" title="踩一下">
-                            <span><i class="iconfont icon-cai"></i></span>
-                            <span>123</span>
+                            <i id="unlike_icon" class="iconfont icon-cai {% get_unlike_status post %}"></i>
+                            <span id="unlike_num" class="unlike-num {% get_unlike_status post %}">{% get_unlike_count post %}</span>
                         </button>
                     </div>
                     <hr>
@@ -181,7 +181,12 @@ function like(obj, content_type, object_id) {
                 var like_num = $(obj.getElementsByClassName('like-num'));
                 if (is_like){
                     element.addClass('islike');
-                    like_num.addClass('islike')
+                    like_num.addClass('islike');
+                    if($('#unlike_icon').is('.isunlike')) {
+                        $('#unlike_icon').removeClass('isunlike');
+                        $('#unlike_num').removeClass('isunlike');
+                        $('#unlike_num').text(data['unlike_num']);
+                    }
 
                 }else{
                     element.removeClass('islike');
@@ -200,7 +205,7 @@ function like(obj, content_type, object_id) {
     })
 }
 function unlike(obj, content_type, object_id) {
-    var is_unlike = obj.getElementsByClassName('islike').length == 0
+    var is_unlike = obj.getElementsByClassName('isunlike').length == 0
     $.ajax({
         url:'{% url "unlike_change" %}',
         type: 'GET',
@@ -211,7 +216,32 @@ function unlike(obj, content_type, object_id) {
         },
         cache: false,
         success:function (data) {
+            console.log(data);
+            if (data['status']== 200){
+                //更新点赞状态
+                var  element = $(obj.getElementsByClassName('icon-cai'));
+                var unlike_num = $(obj.getElementsByClassName('unlike-num'));
 
+                if (is_unlike){
+                    element.addClass('isunlike');
+                    unlike_num.addClass('isunlike')
+                    if($('#like_icon').is('.islike')){
+                        $('#like_icon').removeClass('islike');
+                        $('#like_num').removeClass('islike');
+                        $('#like_num').text(data['like_num']);
+                    }
+
+                }else{
+                    element.removeClass('isunlike');
+                    unlike_num.removeClass('isunlike')
+                }
+                // 更新数量
+
+                unlike_num.text(data['unlike_num'])
+
+            }else{
+                console.log(data)
+            }
         },
         error:function (xhr) {
 

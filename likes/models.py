@@ -25,7 +25,7 @@ class UnLikeCount(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 
-    liked_num = models.IntegerField(default=0, verbose_name='不喜欢数')
+    unliked_num = models.IntegerField(default=0, verbose_name='不喜欢数')
 
 
 class UnLikeRecord(models.Model):
@@ -34,4 +34,4 @@ class UnLikeRecord(models.Model):
     content_object = GenericForeignKey('content_type', 'object_id')
 
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, verbose_name='不喜欢用户')
-    liked_time = models.DateTimeField(auto_now_add=True, verbose_name='踩时间')
+    unliked_time = models.DateTimeField(auto_now_add=True, verbose_name='踩时间')

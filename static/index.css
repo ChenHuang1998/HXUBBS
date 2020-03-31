@@ -89,6 +89,9 @@ body {
 .islike{
     color: red;
 }
+.isunlike{
+    color: red;
+}
 .card-title img{
     width: 100px;
     height: 100px;

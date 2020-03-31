@@ -18,3 +18,21 @@ def get_like_status(context, obj):
         return 'islike'
     else:
         return ''
+
+
+@register.simple_tag
+def get_unlike_count(obj):
+    content_type = ContentType.objects.get_for_model(obj)
+    unlike_count, created = UnLikeCount.objects.get_or_create(content_type=content_type, object_id=obj.id)
+    return unlike_count.unliked_num
+
+@register.simple_tag(takes_context=True)
+def get_unlike_status(context, obj):
+    content_type = ContentType.objects.get_for_model(obj)
+    user = context['user']
+    if user.is_anonymous:
+        return ''
+    if UnLikeRecord.objects.filter(content_type=content_type, object_id=obj.id, user=user.userprofile).exists():
+        return 'isunlike'
+    else:
+        return ''
