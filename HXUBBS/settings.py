@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'bbs',
     'comment',
     'userinfo',
+    'likes',
 ]
 
 MIDDLEWARE = [

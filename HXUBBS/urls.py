@@ -34,4 +34,5 @@ urlpatterns = [
     path('', include('bbs.urls')),
     path('comment/', include('comment.urls')),
     path('user/', include('userinfo.urls')),
+    path('likes/', include('likes.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load comment_tags %}
+{% load likes_tags %}
 {% block title %}
 河西学院BBS站|帖子详情
 {% endblock %}
@@ -43,11 +44,12 @@
                         {{ post.content|safe }}
                     </div>
                     <div class="post-like">
-                        <button class="btn btn-info">
-                            <i class="iconfont icon-dianzan"></i>
-                            <span>128</span>
+                        <button class="btn btn-info"  onclick="like(this, 'post', {{ post.id }})" data-toggle="tooltip" data-placement="left" title="点个赞">
+                            <i class="iconfont icon-dianzan {% get_like_status post %}" ></i>
+                            <span class="like-num {% get_like_status post %}" >{% get_like_count post %}</span>
                         </button>
-                        <button class="btn btn-info"><i class="iconfont icon-cai"></i>
+                        <button class="btn btn-info"  onclick="unlike(this, 'post', {{ post.id }})" data-toggle="tooltip" data-placement="right" title="踩一下">
+                            <span><i class="iconfont icon-cai"></i></span>
                             <span>123</span>
                         </button>
                     </div>
@@ -157,6 +159,67 @@
 {% endblock %}
 {% block script %}
 <script>
+	$(function () { $("[data-toggle='tooltip']").tooltip(); });
+</script>
+<script>
+function like(obj, content_type, object_id) {
+    var is_like = obj.getElementsByClassName('islike').length == 0
+    $.ajax({
+        url:'{% url "like_change" %}',
+        type: 'GET',
+        data:{
+            content_type: content_type,
+            object_id: object_id,
+            is_like: is_like
+        },
+        cache: false,
+        success:function (data) {
+            console.log(data);
+            if (data['status']== 200){
+                //更新点赞状态
+                var  element = $(obj.getElementsByClassName('icon-dianzan'));
+                var like_num = $(obj.getElementsByClassName('like-num'));
+                if (is_like){
+                    element.addClass('islike');
+                    like_num.addClass('islike')
+
+                }else{
+                    element.removeClass('islike');
+                    like_num.removeClass('islike')
+                }
+                // 更新数量
+
+                like_num.text(data['like_num'])
+            }else{
+                console.log(data)
+            }
+        },
+        error:function (xhr) {
+
+        }
+    })
+}
+function unlike(obj, content_type, object_id) {
+    var is_unlike = obj.getElementsByClassName('islike').length == 0
+    $.ajax({
+        url:'{% url "unlike_change" %}',
+        type: 'GET',
+        data:{
+            content_type: content_type,
+            object_id: object_id,
+            is_unlike: is_unlike
+        },
+        cache: false,
+        success:function (data) {
+
+        },
+        error:function (xhr) {
+
+        }
+    })
+}
+</script>
+<script>
     $('#comment_form').submit(function () {
         //判断是否为空
         $('#comment_error').text('');
@@ -240,4 +303,5 @@
         })
     }
 </script>
+
 {% endblock %}
