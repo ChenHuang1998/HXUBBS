@@ -4,17 +4,27 @@ from django.shortcuts import render, HttpResponse, redirect,get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.contenttypes.models import ContentType
+from django.db.models import Count
 from bbs.models import *
 from comment.models import Comment
 from bbs.forms import LoginForm, RegForm, PublishForm
 from comment.forms import CommentForm
+from rest_framework import generics
+from bbs.serializers import *
 from django.contrib.auth.decorators import login_required
 # Create your views here.
+
+
+class PostList(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
 
 def index(request):
     category_list = Category.objects.all()
     post_list = Post.objects.all()
+    if request.is_ajax():
+        return render(request, 'bbs/post_list.html',locals())
     return render(request, 'bbs/index.html', locals())
 
 
@@ -75,8 +85,16 @@ def category(request):
 # 版块详情页
 def caregorydetail(request):
     category_name = request.GET.get('name')
+    theme_pk = request.GET.get('theme')
+    comment = request.GET.get('comment')
     category_detail = Category.objects.get(name=category_name)
-    post_list = Post.objects.filter(category_id=category_detail.pk)
+    theme_list = Theme.objects.filter(category=category_detail)
+    if theme_pk:
+        post_list = Post.objects.filter(category_id=category_detail.pk, theme_id=theme_pk)
+    if comment:
+        post_list = Post.objects.filter(category_id=category_detail.pk).order_by('-comment_count')
+    else:
+        post_list = Post.objects.filter(category_id=category_detail.pk)
     return render(request, 'bbs/caregorydetail.html', locals())
 
 

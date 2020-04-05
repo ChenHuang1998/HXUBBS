@@ -28,6 +28,8 @@ class CommentForm(forms.Form):
         try:
             model_class = ContentType.objects.get(model=content_type).model_class()
             model_obj = model_class.objects.get(id=object_id)
+            model_obj.comment_count += 1
+            model_obj.save()
             self.cleaned_data['content_object'] = model_obj
         except ObjectDoesNotExist:
             raise forms.ValidationError('评论对象不存在')

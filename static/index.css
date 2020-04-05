@@ -26,8 +26,8 @@ body {
 .anniu{
     margin-bottom: 1em
 }
-.anniu button{
-    margin: 0 0.5em;
+.anniu div{
+    margin-left: 1em;
 }
 .cate-card{
     height: 200px;
@@ -217,4 +217,8 @@ div#reply_content_container p{
     float: right;
     margin-right: 8em;
     margin-top: 2em;
+}
+
+.endless_container{
+    text-align: center;
 }

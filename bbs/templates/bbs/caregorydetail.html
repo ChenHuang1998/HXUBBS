@@ -19,9 +19,27 @@ active
         <div class="row">
             <div class="col-sm-9">
                 <div class="anniu">
-                    <button class="btn bg-primary">全部</button>
-                    <button class="btn bg-primary">热度</button>
-                    <button class="btn bg-primary">评论量</button>
+                    <button class="btn btn-primary">全部</button>
+                    <div class=" btn-group dropup" id="change_drop">
+                    <button type="button" id="comment_btn" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        评论量
+                        <span id="carer">
+                            <i class="iconfont icon-shangxiajiantou" style="font-size: 1px"></i>
+                        </span>
+                    </button>
+
+                    </div>
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        主题 <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        {% for theme in theme_list %}
+                        <li><a href="{% url 'categorydetail' %}?name={{ category_name }}&theme={{ theme.id }}">{{ theme.name }}</a></li>
+                        {% endfor %}
+
+                    </ul>
+                    </div>
 
                 </div>
                  {% for post in post_list %}
@@ -74,4 +92,18 @@ active
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+    $('#comment_btn').click(function () {
+        $('#carer').text('').addClass('caret');
+        $('#change_drop').removeClass('dropup').addClass('dropdown');
+        window.location.href='{% url 'categorydetail' %}?name={{ category_name }}&comment=true';
+
+
+
+
+    })
+    </script>
 {% endblock %}

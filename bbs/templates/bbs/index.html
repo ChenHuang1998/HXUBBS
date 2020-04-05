@@ -10,24 +10,7 @@ active
     <div class="container-fluid">
 
         <div class="col-sm-9">
-            {% for post in post_list %}
-            <div class="card">
-                <div class="card-body">
-                    <img src="/media/head_img/{{ post.author.image }}" alt="" class="img-circle">
-                    <h5><a href="{% url 'postdetail' post.id %}">{{ post.title }}</a></h5>
-                    <div class="detail">
-                        <span class="glyphicon glyphicon-user" style="color: #7f7f7f"></span>
-                        <span>{{ post.author }}</span>
-                        <span>发表于 {{ post.created_time }}</span>
-                        <i class="iconfont icon-pinglun"></i>
-                        <span> {% get_comment_count post %}</span>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-
-
-
+            {% include 'bbs/post_list.html' %}
 
         </div>
 
@@ -47,4 +30,11 @@ active
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block script %}
+
+    <script src="/static/el-pagination/js/el-pagination.js"></script>
+    <script>$.endlessPaginate({paginateOnScroll: true});</script>
+
 {% endblock %}

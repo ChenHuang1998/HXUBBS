@@ -12,6 +12,7 @@ class Post(models.Model):
     author = models.ForeignKey('UserProfile', on_delete=models.CASCADE, verbose_name='作者')
     created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     modify_time = models.DateTimeField(auto_now=True, verbose_name='修改时间')
+    comment_count = models.IntegerField(verbose_name='评论数', default=0)
     priority = models.IntegerField(verbose_name='是否置顶',default=0)
 
     class Meta:
