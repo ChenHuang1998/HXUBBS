@@ -10,23 +10,21 @@ active
     <div class="container">
         <div class="ljdh">
             <ol class="breadcrumb">
-                <li><a href="#">首页</a></li>
-                <li><a href="#">版块信息</a></li>
-                <li><a href="#">{{ category_name }}</a></li>
+                <li><a href="{% url 'index' %}">首页</a></li>
+                <li><a href="{% url 'category' %}">版块信息</a></li>
+                <li><span>{{ category_name }}</span></li>
 
             </ol>
         </div>
         <div class="row">
             <div class="col-sm-9">
                 <div class="anniu">
-                    <button class="btn btn-primary">全部</button>
-                    <div class=" btn-group dropup" id="change_drop">
-                    <button type="button" id="comment_btn" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="{% url 'categorydetail' %}?name={{ category_name }}" class="btn btn-primary">全部</a>
+                    <div class=" btn-group {{ comment_label }}">
+                    <a href="{% url 'categorydetail' %}?name={{ category_name }}&comment={{ comment_order }}" id="comment_btn" class="btn btn-primary dropdown-toggle" >
                         评论量
-                        <span id="carer">
-                            <i class="iconfont icon-shangxiajiantou" style="font-size: 1px"></i>
-                        </span>
-                    </button>
+                        <span class="caret"></span>
+                    </a>
 
                     </div>
                     <div class="btn-group">
@@ -42,23 +40,8 @@ active
                     </div>
 
                 </div>
-                 {% for post in post_list %}
-                    <div class="card">
-                        <div class="card-body">
-                            <img src="/static/imgs/avatar.png" alt="" class="img-circle">
-                            <h5><a href="{% url 'postdetail' post.id %}" class="text-decoration-none">{{ post.title }}</a></h5>
-                            <div class="detail">
-                                <span class="glyphicon glyphicon-user" style="color: #7f7f7f"></span>
-                                <span> {{ post.author }}</span>
-                                <span style="margin-left: 1em">发表于 {{ post.created_time|date:"Y-m-d H:i" }}</span>
-                                <i class="iconfont icon-pinglun"></i>
-                                <span> {% get_comment_count post %}</span>
-                            </div>
-                        </div>
-                    </div>
-                {% empty %}
-                    这个版块还没人发帖
-                {% endfor %}
+
+                 {% include 'bbs/post_list.html' %}
 
             </div>
             <div class="col-md-3">
@@ -95,15 +78,8 @@ active
 {% endblock %}
 
 {% block script %}
-    <script>
-    $('#comment_btn').click(function () {
-        $('#carer').text('').addClass('caret');
-        $('#change_drop').removeClass('dropup').addClass('dropdown');
-        window.location.href='{% url 'categorydetail' %}?name={{ category_name }}&comment=true';
 
+    <script src="/static/el-pagination/js/el-pagination.js"></script>
+    <script>$.endlessPaginate({paginateOnScroll: true});</script>
 
-
-
-    })
-    </script>
 {% endblock %}

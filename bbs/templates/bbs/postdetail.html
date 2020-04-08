@@ -44,12 +44,12 @@
                         {{ post.content|safe }}
                     </div>
                     <div class="post-like">
-                        <button class="btn btn-info"  onclick="like(this, 'post', {{ post.id }})" data-toggle="tooltip" data-placement="left" title="点个赞">
-                            <i id="like_icon" class="iconfont icon-dianzan {% get_like_status post %}" ></i>
+                        <button class="btn btn-info"  onclick="like(this, 'post', {{ post.id }},'0')" data-toggle="tooltip" data-placement="left" title="点个赞">
+                            <i id="like_icon" class="iconfont icon-like-b {% get_like_status post %}" ></i>
                             <span id="like_num" class="like-num {% get_like_status post %}" >{% get_like_count post %}</span>
                         </button>
-                        <button class="btn btn-info"  onclick="unlike(this, 'post', {{ post.id }})" data-toggle="tooltip" data-placement="right" title="踩一下">
-                            <i id="unlike_icon" class="iconfont icon-cai {% get_unlike_status post %}"></i>
+                        <button class="btn btn-info"  onclick="unlike(this, 'post', {{ post.id }},'0')" data-toggle="tooltip" data-placement="right" title="踩一下">
+                            <i id="unlike_icon" class="iconfont icon-cai1 {% get_unlike_status post %}"></i>
                             <span id="unlike_num" class="unlike-num {% get_unlike_status post %}">{% get_unlike_count post %}</span>
                         </button>
                     </div>
@@ -98,6 +98,16 @@
                                     <div id="comment_{{ comment.id }}" class="comment-detail">{{ comment.text|safe }}</div>
                                     <div class="comment-date">
                                         <span>{{ comment.comment_time|date:'Y-m-d H:i' }}</span>
+
+                                        <span onclick="like(this, '{% get_content_type comment %}', {{ comment.id }}, '1','{{ forloop.counter }}')">
+                                            <i id="comment_like_icon_{{ forloop.counter }}" class="iconfont icon-like-b {% get_like_status comment %}" ></i>
+                                            <span id="comment_like_num_{{ forloop.counter }}" class="like-num {% get_like_status comment %}">{% get_like_count comment %}</span>
+                                        </span>
+                                        <span onclick="unlike(this, '{% get_content_type comment %}', {{ comment.id }},'1','{{ forloop.counter }}')">
+                                            <i id="comment_unlike_icon_{{ forloop.counter }}" class="iconfont icon-cai1 {% get_unlike_status comment %}" ></i>
+                                            <span id="comment_unlike_num_{{ forloop.counter }}" class="unlike-num {% get_unlike_status comment %}">{% get_unlike_count comment %}</span>
+                                        </span>
+
                                         <span><a href="javascript:reply({{ comment.id }})">回复</a></span>
                                     </div>
                                     <div style="clear: both"></div>
@@ -105,12 +115,22 @@
                                 {% for reply in comment.root_comment.all %}
                                     <div class="reply-content">
                                         <img src="/static/imgs/default.png" alt="" class="img-circle reply-head-img">
-                                        <div class="reply-user-detail">
-                                            <span>{{ reply.user.name }} 回复 {{ reply.reply_to.name }}:</span>
+                                        <div class="reply-user-detail" >
+                                            <span>{{ reply.user.name }} 回复 {{ reply.reply_to.name }}: &nbsp;</span>
                                             <span id="comment_{{ reply.id }}">{{ reply.text|safe }}</span>
                                         </div>
                                         <div class="reply-date">
                                             <span>{{ reply.comment_time|date:'Y-m-d H:i' }}</span>
+
+                                            <span onclick="like(this, '{% get_content_type reply %}', {{ reply.id }},'2', '{{ forloop.counter }}')">
+                                                <i id="reply_like_icon_{{ forloop.counter }}" class="iconfont icon-like-b {% get_like_status reply %}" ></i>
+                                                <span id="reply_like_num_{{ forloop.counter }}" class="like-num {% get_like_status reply %}">{% get_like_count reply %}</span>
+                                            </span>
+                                            <span onclick="unlike(this, '{% get_content_type reply %}', {{ reply.id }},'2', '{{ forloop.counter }}')">
+                                                <i id="reply_unlike_icon_{{ forloop.counter }}" class="iconfont icon-cai1 {% get_unlike_status reply %}" ></i>
+                                                <span id="reply_unlike_num_{{ forloop.counter }}" class="unlike-num {% get_unlike_status reply %}">{% get_unlike_count reply %}</span>
+                                            </span>
+
                                             <span><a href="javascript:reply({{ reply.id }})">回复</a></span>
                                         </div>
                                         <div style="clear: both"></div>
@@ -162,8 +182,9 @@
 	$(function () { $("[data-toggle='tooltip']").tooltip(); });
 </script>
 <script>
-function like(obj, content_type, object_id) {
+function like(obj, content_type, object_id, a, b) {
     var is_like = obj.getElementsByClassName('islike').length == 0
+    console.log(a)
     $.ajax({
         url:'{% url "like_change" %}',
         type: 'GET',
@@ -177,16 +198,33 @@ function like(obj, content_type, object_id) {
             console.log(data);
             if (data['status']== 200){
                 //更新点赞状态
-                var  element = $(obj.getElementsByClassName('icon-dianzan'));
+                var  element = $(obj.getElementsByClassName('icon-like-b'));
                 var like_num = $(obj.getElementsByClassName('like-num'));
                 if (is_like){
                     element.addClass('islike');
                     like_num.addClass('islike');
-                    if($('#unlike_icon').is('.isunlike')) {
-                        $('#unlike_icon').removeClass('isunlike');
-                        $('#unlike_num').removeClass('isunlike');
-                        $('#unlike_num').text(data['unlike_num']);
-                    }
+                    if (a=='0'){
+                        if($('#unlike_icon').is('.isunlike')) {
+                            $('#unlike_icon').removeClass('isunlike');
+                            $('#unlike_num').removeClass('isunlike');
+                            $('#unlike_num').text(data['unlike_num']);
+                        }
+                    }else if(a== '1'){
+                        {#console.log($('#comment_unlike_icon_'+ b).is('.isunlike'));#}
+                        if($('#comment_unlike_icon_'+ b).is('.isunlike')) {
+                            $('#comment_unlike_icon_'+ b).removeClass('isunlike');
+                            $('#comment_unlike_num_'+ b).removeClass('isunlike');
+                            $('#comment_unlike_num_'+ b).text(data['unlike_num']);
+                        }
+                    }else if(a== '2'){
+
+                        if($('#reply_unlike_icon_'+ b).is('.isunlike')) {
+                            $('#reply_unlike_icon_'+ b).removeClass('isunlike');
+                            $('#reply_unlike_num_'+ b).removeClass('isunlike');
+                            $('#reply_unlike_num_'+ b).text(data['unlike_num']);
+                        }
+                        }
+
 
                 }else{
                     element.removeClass('islike');
@@ -204,7 +242,7 @@ function like(obj, content_type, object_id) {
         }
     })
 }
-function unlike(obj, content_type, object_id) {
+function unlike(obj, content_type, object_id,a,b) {
     var is_unlike = obj.getElementsByClassName('isunlike').length == 0
     $.ajax({
         url:'{% url "unlike_change" %}',
@@ -219,16 +257,30 @@ function unlike(obj, content_type, object_id) {
             console.log(data);
             if (data['status']== 200){
                 //更新点赞状态
-                var  element = $(obj.getElementsByClassName('icon-cai'));
+                var  element = $(obj.getElementsByClassName('icon-cai1'));
                 var unlike_num = $(obj.getElementsByClassName('unlike-num'));
 
                 if (is_unlike){
                     element.addClass('isunlike');
-                    unlike_num.addClass('isunlike')
-                    if($('#like_icon').is('.islike')){
-                        $('#like_icon').removeClass('islike');
-                        $('#like_num').removeClass('islike');
-                        $('#like_num').text(data['like_num']);
+                    unlike_num.addClass('isunlike');
+                    if(a=='0'){
+                        if($('#like_icon').is('.islike')){
+                            $('#like_icon').removeClass('islike');
+                            $('#like_num').removeClass('islike');
+                            $('#like_num').text(data['like_num']);
+                        }
+                    }else if(a=='1'){
+                        if($('#comment_like_icon_'+ b).is('.islike')) {
+                            $('#comment_like_icon_'+ b).removeClass('islike');
+                            $('#comment_like_num_'+ b).removeClass('islike');
+                            $('#comment_like_num_'+ b).text(data['like_num']);
+                        }
+                    }else if(a=='2') {
+                        if ($('#reply_like_icon_' + b).is('.islike')) {
+                            $('#reply_like_icon_' + b).removeClass('islike');
+                            $('#reply_like_num_' + b).removeClass('islike');
+                            $('#reply_like_num_' + b).text(data['like_num']);
+                        }
                     }
 
                 }else{
@@ -298,7 +350,7 @@ function unlike(obj, content_type, object_id) {
                         '                                        </div>\n' +
                         '                                        <div style="clear: both"></div>\n' +
                         '                                    </div>';
-                        $("#root_"+data['root_pk']).append(reply_html)
+                        $("#root_"+data['root_pk']).append(reply_html);
                         $('#comment_error').text('回复成功')
 
                     }

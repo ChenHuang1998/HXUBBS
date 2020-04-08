@@ -89,12 +89,31 @@ def caregorydetail(request):
     comment = request.GET.get('comment')
     category_detail = Category.objects.get(name=category_name)
     theme_list = Theme.objects.filter(category=category_detail)
+    post_list = Post.objects.filter(category_id=category_detail.pk)
+    comment_order = 1
+    comment_label = 'dropup'
     if theme_pk:
         post_list = Post.objects.filter(category_id=category_detail.pk, theme_id=theme_pk)
-    if comment:
+    elif comment == '1':
         post_list = Post.objects.filter(category_id=category_detail.pk).order_by('-comment_count')
+        comment_order = 0
+        comment_label = 'dropdown'
+    elif comment == '0':
+        post_list = Post.objects.filter(category_id=category_detail.pk).order_by('comment_count')
+        comment_order = 1
+        comment_label = 'dropup'
     else:
         post_list = Post.objects.filter(category_id=category_detail.pk)
+    if request.is_ajax():
+        if theme_pk:
+            post_list = Post.objects.filter(category_id=category_detail.pk, theme_id=theme_pk)
+        elif comment == '1':
+            post_list = Post.objects.filter(category_id=category_detail.pk).order_by('-comment_count')
+        elif comment == '0':
+            post_list = Post.objects.filter(category_id=category_detail.pk).order_by('comment_count')
+        else:
+            post_list = Post.objects.filter(category_id=category_detail.pk)
+        return render(request, 'bbs/post_list.html',locals())
     return render(request, 'bbs/caregorydetail.html', locals())
 
 
@@ -102,7 +121,7 @@ def caregorydetail(request):
 def postdetail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     post_content_type = ContentType.objects.get_for_model(post)
-    comments = Comment.objects.filter(content_type=post_content_type, object_id=post_id, parent=None).order_by('-comment_time')
+    comments = Comment.objects.filter(content_type=post_content_type, object_id=post_id, parent=None).order_by('comment_time')
     data = {'content_type': post_content_type.model,'object_id': post_id,'reply_comment_id': 0}
     comment_form = CommentForm(initial=data)
     reply_form = CommentForm(initial=data)

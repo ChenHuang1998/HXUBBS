@@ -87,10 +87,11 @@ body {
     text-align: center;
 }
 .islike{
-    color: red;
+    color: #4188f3;
+
 }
 .isunlike{
-    color: red;
+    color: #4188f3;
 }
 .card-title img{
     width: 100px;
@@ -141,7 +142,7 @@ div#reply_content_container p{
 
 }
 .reply-user-detail span p{
-    margin-left: 9em;
+    /*margin-left: 9em;*/
 }
 .comment-list{
     margin-left: 2em;
@@ -155,6 +156,10 @@ div#reply_content_container p{
 .comment-list h4{
     margin-bottom: 2em;
 }
+.comment-list i{
+    font-size: 15px;
+}
+
 .comment-head-img{
     width: 60px;
     height: 60px;
@@ -165,12 +170,19 @@ div#reply_content_container p{
     color: #99a2aa;
     font-size: 12px;
     margin-left: 9em!important;
+    margin-top: -0.5em;
+}
+.comment-date>span{
+    margin-right: 2em;
 }
 .reply-date{
     color: #99a2aa;
     font-size: 12px;
     margin-left: 12em!important;
     margin-top: -0.5em;
+}
+.reply-date>span{
+    margin-right: 2em;
 }
 .reply-head-img{
     width: 40px;
