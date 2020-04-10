@@ -1,5 +1,7 @@
 from django import forms
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
+
 from bbs.models import UserProfile, Post
 from ckeditor_uploader.fields import RichTextUploadingFormField, RichTextUploadingField
 from ckeditor.widgets import CKEditorWidget
@@ -32,7 +34,7 @@ class RegForm(forms.Form):
 
     def clean_username(self):
         username = self.cleaned_data['username']
-        if UserProfile.objects.filter(name=username).exists():
+        if User.objects.filter(username=username).exists():
             raise forms.ValidationError('用户名已存在')
         return username
 
@@ -41,6 +43,8 @@ class RegForm(forms.Form):
         password_again = self.cleaned_data['password_again']
         if password != password_again:
             raise forms.ValidationError('两次密码不一致')
+        if password =='12345678':
+            raise forms.ValidationError('密码过于简单')
         return password_again
 
 

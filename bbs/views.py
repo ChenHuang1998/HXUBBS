@@ -1,5 +1,8 @@
+import datetime
+
 import requests
 from lxml import etree
+import time
 from django.shortcuts import render, HttpResponse, redirect,get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth import login, logout, authenticate
@@ -11,6 +14,7 @@ from bbs.forms import LoginForm, RegForm, PublishForm
 from comment.forms import CommentForm
 from rest_framework import generics
 from bbs.serializers import *
+from new_spider.models import News
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -21,8 +25,14 @@ class PostList(generics.ListAPIView):
 
 
 def index(request):
-    category_list = Category.objects.all()
     post_list = Post.objects.all()
+    all_category_list = Category.objects.all().annotate(post_count=Count('post')).order_by('-post_count')
+    all_user = UserProfile.objects.all().annotate(post_count=Count('post')).order_by('-post_count')
+    all_theme = Theme.objects.all().annotate(post_count=Count('post')).order_by('-post_count')
+    hot_theme = all_theme[:6]
+    news_list = News.objects.all()[:5]
+    hot_user = all_user[:3]
+    hot_category_list = all_category_list[:3]
     if request.is_ajax():
         return render(request, 'bbs/post_list.html',locals())
     return render(request, 'bbs/index.html', locals())
@@ -90,6 +100,10 @@ def caregorydetail(request):
     category_detail = Category.objects.get(name=category_name)
     theme_list = Theme.objects.filter(category=category_detail)
     post_list = Post.objects.filter(category_id=category_detail.pk)
+    today = datetime.datetime.now()
+    today_post = Post.objects.filter(category_id=category_detail.pk,created_time__year=today.year,created_time__month=today.month,created_time__day=today.day).count()
+    month_post = Post.objects.filter(category_id=category_detail.pk,created_time__year=today.year,created_time__month=today.month).count()
+
     comment_order = 1
     comment_label = 'dropup'
     if theme_pk:
@@ -120,8 +134,10 @@ def caregorydetail(request):
 # 帖子详情页
 def postdetail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
+    post.read_num += 1
+    post.save()
     post_content_type = ContentType.objects.get_for_model(post)
-    comments = Comment.objects.filter(content_type=post_content_type, object_id=post_id, parent=None).order_by('comment_time')
+    comments = Comment.objects.filter(content_type=post_content_type, object_id=post_id, parent=None).order_by('-comment_time')
     data = {'content_type': post_content_type.model,'object_id': post_id,'reply_comment_id': 0}
     comment_form = CommentForm(initial=data)
     reply_form = CommentForm(initial=data)

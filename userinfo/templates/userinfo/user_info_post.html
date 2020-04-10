@@ -1,0 +1,18 @@
+
+{% load el_pagination_tags %}
+{% lazy_paginate post_list %}
+{% for post in post_list %}
+    <div class="user-post">
+        <div class="user-info-title">
+            <span class="label label-default">{{ post.theme }}</span>
+            {{ post.title }}
+        </div>
+        <div class="user-info-content">{{ post.content|safe|striptags|truncatechars:60 }}...</div>
+        <div class="user-info-date">
+            <span>{{ post.created_time }}</span>
+            <span>点击({{ post.read_num }})</span>
+            <span>评论({{ post.comment_count }})</span>
+        </div>
+    </div>
+{% endfor %}
+{% show_more  '加载更多' '加载中' 'show-more' %}

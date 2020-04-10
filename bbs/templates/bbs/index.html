@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bbs_tags %}
 {% load comment_tags %}
 {% block title %}
 河西学院BBS站|首页
@@ -6,10 +7,70 @@
 {% block index %}
 active
 {% endblock %}
+{% block style %}
+    <style>
+   .card-body{
+       padding-left: 4em;
+   }
+   .card-body h5{
+       margin-left: 6em;
+   }
+   .detail{
+       margin-left: 9em;
+       font-size: 10px;
+   }
+
+    </style>
+{% endblock %}
 {% block content %}
     <div class="container-fluid">
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 style="color: red" class="panel-title"><span class="glyphicon glyphicon-bullhorn" style="margin-right: 1em"></span>公告</h3>
+                </div>
+                <div class="panel-body">
+                    <div style="color: red;margin-bottom: 1em">请文明浏览帖子，发布帖子，文明用语，禁止不良内容的发布</div>
+                    <div style="color: red">游客需要登录才能发帖，点赞和评论</div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4><span class="glyphicon glyphicon-list-alt" style="margin-right: 1em"></span>校园新闻</h4>
+                    <hr>
+                    {% for new in news_list %}
 
-        <div class="col-sm-9">
+                        <div ><a href="{{ new.url }}" target="_blank">{{ new.title }}</a></div>
+                        <div style="margin-left: 11em;"><span style="color:#99a2aa;">{{ new.time }}</span></div>
+                        <hr style="margin-top: 10px">
+
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4><span class="glyphicon glyphicon-link" style="margin-right: 1em"></span>友情链接</h4>
+                    <hr>
+                        <div ><a href="http://www.moe.gov.cn/" target="_blank">中华人民共和国教育部</a></div>
+                        <hr style="margin-top: 10px">
+                        <div ><a href="http://www10.hxu.edu.cn/" target="_blank">河西学院官网</a></div>
+                        <hr style="margin-top: 10px">
+                        <div ><a href="http://www.xinhuanet.com/" target="_blank">新华网</a></div>
+                        <hr style="margin-top: 10px">
+                        <div ><a href="http://www.people.com.cn/" target="_blank">人民网</a></div>
+                        <hr style="margin-top: 10px">
+                        <div ><a href="http://www.youth.cn/" target="_blank">中国青年网</a></div>
+                        <hr style="margin-top: 10px">
+                        <div ><a href="https://www.xuexi.cn/" target="_blank">学习强国</a></div>
+                        <hr style="margin-top: 10px">
+                        <div ><a href="https://www.fudan.edu.cn/" target="_blank">复旦大学</a></div>
+                        <hr style="margin-top: 10px">
+                        <div ><a href="https://www.pku.edu.cn/" target="_blank">北京大学</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
             {% include 'bbs/post_list.html' %}
 
         </div>
@@ -22,12 +83,42 @@ active
                 <a href="#" class="list-group-item disabled">
                     <span class="glyphicon glyphicon-tags"></span>
                     热门版块
+
                 </a>
-                {% for category in category_list %}
-                    <a href="" class="list-group-item">{{ category.name }}</a>
+                {% for category in hot_category_list %}
+                    <a href="" class="list-group-item">{{ category.name }}<span class="badge">{{ category.post_set.count }}</span></a>
+
                 {% endfor %}
 
             </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4><span class="glyphicon glyphicon-tasks" style="margin-right: 1em"></span>活跃用户</h4>
+                    <hr>
+                    {% for user in hot_user %}
+
+                        <div class="progress">
+                            <div class="progress-bar  {% if forloop.first %} progress-bar-success {% elif forloop.last %} progress-bar-info{% else %} progress-bar-warning {% endif %} progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {% if forloop.first %} 85% {% elif forloop.last %}35%{% else %}55%{% endif %}">
+                                <a href="{% url 'userinfo' %}?name={{ user.name }}" style="color:white;"><span >{{ user.name }}</span></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4><span class="glyphicon glyphicon-fire" style="margin-right: 1em"></span>热门主题</h4>
+                    <hr>
+                    <div class="row" style="margin-left: 1em">
+                        {% for theme in hot_theme %}
+                            <a href="{% url 'categorydetail' %}?name={{ theme.category.name }}&theme={{ theme.id }}"><div class="label {% get_label %}" style="width: 50px">{{ theme.name }}</div></a>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 {% endblock %}
@@ -35,6 +126,9 @@ active
 {% block script %}
 
     <script src="/static/el-pagination/js/el-pagination.js"></script>
-    <script>$.endlessPaginate({paginateOnScroll: true});</script>
+    <script>$.endlessPaginate({
+            paginateOnScroll: true,
+            paginateOnScrollChunkSize: 1
+        })</script>
 
 {% endblock %}

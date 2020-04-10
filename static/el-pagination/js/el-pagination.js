@@ -57,11 +57,12 @@
 
                 var context = getContext(link);
                 // Fire onClick callback.
+                setTimeout(function () {
+
+
                 if (settings.onClick.apply(html_link, [context]) !== false) {
                     var data = 'querystring_key=' + context.key;
                     // Send the Ajax request.
-                    setTimeout(function () {
-
 
                     $.get(context.url, data, function (fragment) {
                         // Increase the number of loaded pages.
@@ -83,11 +84,11 @@
                         // Fire onCompleted callback.
                         settings.onCompleted.apply(
                             html_link, [context, $.trim(fragment)]);
-                    })},500).fail(function (xhr, textStatus, error) {
+                    }).fail(function (xhr, textStatus, error) {
                         // Remove the container left if any
                         container.remove();
                     });
-                }
+                }},500);
                 return false;
             });
 

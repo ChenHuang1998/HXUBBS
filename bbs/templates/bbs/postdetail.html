@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load comment_tags %}
+{% load bbs_tags %}
 {% load likes_tags %}
 {% block title %}
 河西学院BBS站|帖子详情
@@ -99,19 +100,19 @@
                                     <div class="comment-date">
                                         <span>{{ comment.comment_time|date:'Y-m-d H:i' }}</span>
 
-                                        <span onclick="like(this, '{% get_content_type comment %}', {{ comment.id }}, '1','{{ forloop.counter }}')">
-                                            <i id="comment_like_icon_{{ forloop.counter }}" class="iconfont icon-like-b {% get_like_status comment %}" ></i>
-                                            <span id="comment_like_num_{{ forloop.counter }}" class="like-num {% get_like_status comment %}">{% get_like_count comment %}</span>
+                                        <span onclick="like(this, '{% get_content_type comment %}', {{ comment.id }}, '1')">
+                                            <i id="comment_like_icon_{{ comment.id }}" class="iconfont icon-like-b {% get_like_status comment %}" ></i>
+                                            <span id="comment_like_num_{{ comment.id }}" class="like-num {% get_like_status comment %}">{% get_like_count comment %}</span>
                                         </span>
-                                        <span onclick="unlike(this, '{% get_content_type comment %}', {{ comment.id }},'1','{{ forloop.counter }}')">
-                                            <i id="comment_unlike_icon_{{ forloop.counter }}" class="iconfont icon-cai1 {% get_unlike_status comment %}" ></i>
-                                            <span id="comment_unlike_num_{{ forloop.counter }}" class="unlike-num {% get_unlike_status comment %}">{% get_unlike_count comment %}</span>
+                                        <span onclick="unlike(this, '{% get_content_type comment %}', {{ comment.id }},'1')">
+                                            <i id="comment_unlike_icon_{{ comment.id }}" class="iconfont icon-cai1 {% get_unlike_status comment %}" ></i>
+                                            <span id="comment_unlike_num_{{ comment.id }}" class="unlike-num {% get_unlike_status comment %}">{% get_unlike_count comment %}</span>
                                         </span>
 
                                         <span><a href="javascript:reply({{ comment.id }})">回复</a></span>
                                     </div>
                                     <div style="clear: both"></div>
-                                </div>
+
                                 {% for reply in comment.root_comment.all %}
                                     <div class="reply-content">
                                         <img src="/static/imgs/default.png" alt="" class="img-circle reply-head-img">
@@ -122,13 +123,13 @@
                                         <div class="reply-date">
                                             <span>{{ reply.comment_time|date:'Y-m-d H:i' }}</span>
 
-                                            <span onclick="like(this, '{% get_content_type reply %}', {{ reply.id }},'2', '{{ forloop.counter }}')">
-                                                <i id="reply_like_icon_{{ forloop.counter }}" class="iconfont icon-like-b {% get_like_status reply %}" ></i>
-                                                <span id="reply_like_num_{{ forloop.counter }}" class="like-num {% get_like_status reply %}">{% get_like_count reply %}</span>
+                                            <span onclick="like(this, '{% get_content_type reply %}', {{ reply.id }},'2')">
+                                                <i id="reply_like_icon_{{ reply.id }}" class="iconfont icon-like-b {% get_like_status reply %}" ></i>
+                                                <span id="reply_like_num_{{ reply.id }}" class="like-num {% get_like_status reply %}">{% get_like_count reply %}</span>
                                             </span>
-                                            <span onclick="unlike(this, '{% get_content_type reply %}', {{ reply.id }},'2', '{{ forloop.counter }}')">
-                                                <i id="reply_unlike_icon_{{ forloop.counter }}" class="iconfont icon-cai1 {% get_unlike_status reply %}" ></i>
-                                                <span id="reply_unlike_num_{{ forloop.counter }}" class="unlike-num {% get_unlike_status reply %}">{% get_unlike_count reply %}</span>
+                                            <span onclick="unlike(this, '{% get_content_type reply %}', {{ reply.id }},'2')">
+                                                <i id="reply_unlike_icon_{{ reply.id }}" class="iconfont icon-cai1 {% get_unlike_status reply %}" ></i>
+                                                <span id="reply_unlike_num_{{ reply.id }}" class="unlike-num {% get_unlike_status reply %}">{% get_unlike_count reply %}</span>
                                             </span>
 
                                             <span><a href="javascript:reply({{ reply.id }})">回复</a></span>
@@ -136,7 +137,8 @@
                                         <div style="clear: both"></div>
                                     </div>
                                 {% endfor %}
-                                <hr>
+                                <hr id="hr_{{ comment.id }}">
+                                </div>
                             {% empty %}
                                 <span id="no_comment">暂无评论</span>
                             {% endfor %}
@@ -163,8 +165,26 @@
             <div class="col-md-3">
                 <div class="card card-post">
                     <div class="card-cont">
-                        <div class="card-title"><img src="/media/head_img/{{ post.author.image }}" alt="" class="img-circle"></div>
-                        <div class="row" style="margin: 1em;">
+                        <div class="card-title">
+                            <img src="/media/head_img/{{ post.author.image }}" alt="" class="img-circle">
+                            <h4>{{ post.author.name }}</h4>
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4" style="border-right: 1px solid #fff0ff;text-align: center">
+                                <div>{{ post.author.post_set.count }}</div>
+                                <div>发布</div>
+
+                            </div>
+                            <div class="col-xs-4" style="border-right: 1px solid #fff0ff;text-align: center">
+                                <div>{% get_like_user post.author.post_set.all %}</div>
+                                <div>获赞</div>
+                            </div>
+                            <div class="col-xs-4" style="text-align: center">
+                                <div>{{ post.author.comments.count }}</div>
+                                <div>评论</div>
+                            </div>
+                        </div>
 
 
                         </div>
@@ -176,15 +196,37 @@
         </div>
     </div>
 
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="no_login_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">请先登录</h4>
+                </div>
+                <div class="modal-body">您未登录，不能进行操作，快去登录吧</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <a href="{% url 'login' %}?from={{ request.get_full_path }}"  class="btn btn-primary">去登录</a>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
 {% endblock %}
 {% block script %}
 <script>
 	$(function () { $("[data-toggle='tooltip']").tooltip(); });
+	String.prototype.format = function () {
+	    var str = this;
+        for (var i = 0; i < arguments.length; i++) {
+            var str = str.replace(new RegExp('\\{'+i+'\\}', 'g'), arguments[i])
+        }
+        return str
+    }
 </script>
 <script>
-function like(obj, content_type, object_id, a, b) {
+function like(obj, content_type, object_id, a) {
     var is_like = obj.getElementsByClassName('islike').length == 0
-    console.log(a)
     $.ajax({
         url:'{% url "like_change" %}',
         type: 'GET',
@@ -210,18 +252,19 @@ function like(obj, content_type, object_id, a, b) {
                             $('#unlike_num').text(data['unlike_num']);
                         }
                     }else if(a== '1'){
-                        {#console.log($('#comment_unlike_icon_'+ b).is('.isunlike'));#}
-                        if($('#comment_unlike_icon_'+ b).is('.isunlike')) {
-                            $('#comment_unlike_icon_'+ b).removeClass('isunlike');
-                            $('#comment_unlike_num_'+ b).removeClass('isunlike');
-                            $('#comment_unlike_num_'+ b).text(data['unlike_num']);
+                        console.log($('#comment_unlike_icon_'+ object_id).is('.isunlike'));
+                        if($('#comment_unlike_icon_'+ object_id).is('.isunlike')) {
+                            $('#comment_unlike_icon_'+ object_id).removeClass('isunlike');
+                            $('#comment_unlike_num_'+ object_id).removeClass('isunlike');
+                            $('#comment_unlike_num_'+ object_id).text(data['unlike_num']);
+
                         }
                     }else if(a== '2'){
 
-                        if($('#reply_unlike_icon_'+ b).is('.isunlike')) {
-                            $('#reply_unlike_icon_'+ b).removeClass('isunlike');
-                            $('#reply_unlike_num_'+ b).removeClass('isunlike');
-                            $('#reply_unlike_num_'+ b).text(data['unlike_num']);
+                        if($('#reply_unlike_icon_'+ object_id).is('.isunlike')) {
+                            $('#reply_unlike_icon_'+ object_id).removeClass('isunlike');
+                            $('#reply_unlike_num_'+ object_id).removeClass('isunlike');
+                            $('#reply_unlike_num_'+ object_id).text(data['unlike_num']);
                         }
                         }
 
@@ -233,7 +276,10 @@ function like(obj, content_type, object_id, a, b) {
                 // 更新数量
 
                 like_num.text(data['like_num'])
-            }else{
+            }else if(data['status']==400){
+                $('#no_login_modal').modal('show')
+            }
+            else{
                 console.log(data)
             }
         },
@@ -242,7 +288,7 @@ function like(obj, content_type, object_id, a, b) {
         }
     })
 }
-function unlike(obj, content_type, object_id,a,b) {
+function unlike(obj, content_type, object_id,a) {
     var is_unlike = obj.getElementsByClassName('isunlike').length == 0
     $.ajax({
         url:'{% url "unlike_change" %}',
@@ -270,16 +316,17 @@ function unlike(obj, content_type, object_id,a,b) {
                             $('#like_num').text(data['like_num']);
                         }
                     }else if(a=='1'){
-                        if($('#comment_like_icon_'+ b).is('.islike')) {
-                            $('#comment_like_icon_'+ b).removeClass('islike');
-                            $('#comment_like_num_'+ b).removeClass('islike');
-                            $('#comment_like_num_'+ b).text(data['like_num']);
+                        console.log($('#comment_like_icon_'+ object_id).is('.islike'))
+                        if($('#comment_like_icon_'+ object_id).is('.islike')) {
+                            $('#comment_like_icon_'+ object_id).removeClass('islike');
+                            $('#comment_like_num_'+ object_id).removeClass('islike');
+                            $('#comment_like_num_'+ object_id).text(data['like_num']);
                         }
                     }else if(a=='2') {
-                        if ($('#reply_like_icon_' + b).is('.islike')) {
-                            $('#reply_like_icon_' + b).removeClass('islike');
-                            $('#reply_like_num_' + b).removeClass('islike');
-                            $('#reply_like_num_' + b).text(data['like_num']);
+                        if ($('#reply_like_icon_' + object_id).is('.islike')) {
+                            $('#reply_like_icon_' + object_id).removeClass('islike');
+                            $('#reply_like_num_' + object_id).removeClass('islike');
+                            $('#reply_like_num_' + object_id).text(data['like_num']);
                         }
                     }
 
@@ -291,6 +338,8 @@ function unlike(obj, content_type, object_id,a,b) {
 
                 unlike_num.text(data['unlike_num'])
 
+            }else if (data['status']==400){
+                $('#no_login_modal').modal('show')
             }else{
                 console.log(data)
             }
@@ -302,8 +351,10 @@ function unlike(obj, content_type, object_id,a,b) {
 }
 </script>
 <script>
+    var weizhi;
     $('#comment_form').submit(function () {
         //判断是否为空
+
         $('#comment_error').text('');
         if(CKEDITOR.instances['id_text'].document.getBody().getText().trim()==''){
             $('#comment_error').text('评论内容不能为空');
@@ -323,36 +374,53 @@ function unlike(obj, content_type, object_id,a,b) {
                     // 插入数据
                     if($('#reply_comment_id').val()=='0'){
                         // 插入评论
-                        var comment_html = '<div id="root_'+data['pk']+'">\n' +
+                        var comment_html = '<div id="root_'+data['pk']+'" class="comment-content">\n' +
                     '                                    <img src="/static/imgs/default.png" alt="" class="img-circle comment-head-img">\n' +
                     '                                    <div class="comment-user" style="margin-left:8em;margin-bottom:0.5em">'+data['user_name']+'</div>\n' +
                     '                                    <div id="comment_'+data['pk']+'" class="comment-detail" style="margin-left:8em;margin-bottom:0.5em">'+data['text']+'</div>\n' +
                     '                                    <div class="comment-date">\n' +
                     '                                        <span>'+data['comment_time']+'</span>\n' +
+                    '                                        <span onclick="like(this, \''+data['content_type']+'\', '+data['pk']+', '+1+')">\n' +
+                    '                                            <i id="comment_like_icon_'+data['pk']+'" class="iconfont icon-like-b" ></i>\n' +
+                    '                                            <span id="comment_like_num_'+data['pk']+'" class="like-num">0</span>\n' +
+                    '                                        </span>\n' +
+                    '                                        <span onclick="unlike(this, \''+data['content_type']+'\', '+data['pk']+','+1+')">\n' +
+                    '                                            <i id="comment_unlike_icon_'+data['pk']+'" class="iconfont icon-cai1" ></i>\n' +
+                    '                                            <span id="comment_unlike_num_'+data['pk']+'" class="unlike-num ">0</span>\n' +
+                    '                                        </span>\n' +
                     '                                        <span><a href="javascript:reply('+data['pk']+')">回复</a></span>\n' +
                     '                                    </div>\n' +
                     '                                    <div style="clear: both"></div>\n' +
-                    '                                </div><hr>';
+                    '                                <hr id="hr_'+data['pk']+'"></div>';
                     $('#comment_list').prepend(comment_html);
                     $('#comment_error').text('评论成功')
 
                     }else{
                         // 插入回复
-                        var reply_html = '<div >\n' +
+                        var reply_html = '<div class="reply-content" style="margin-left:8em;margin-bottom:0.5em">\n' +
                         '                                        <img src="/static/imgs/default.png" alt="" class="img-circle reply-head-img">\n' +
-                        '                                        <div class="reply-user-detail" style="margin-left:10em">\n' +
+                        '                                        <div class="reply-user-detail" >\n' +
                         '                                            <span>'+data['user_name']+' 回复 '+data['reply_to']+':</span>\n' +
                         '                                            <span id="comment_'+data['pk']+'">'+data['text']+'</span>\n' +
                         '                                        </div>\n' +
                         '                                        <div class="reply-date">\n' +
                         '                                            <span>'+data['comment_time']+'</span>\n' +
+                        '                                        <span onclick="like(this, \''+data['content_type']+'\', '+data['pk']+', '+1+')">\n' +
+                        '                                            <i id="comment_like_icon_'+data['pk']+'" class="iconfont icon-like-b" ></i>\n' +
+                        '                                            <span id="comment_like_num_'+data['pk']+'" class="like-num">0</span>\n' +
+                        '                                        </span>\n' +
+                        '                                        <span onclick="unlike(this, \''+data['content_type']+'\', '+data['pk']+','+1+')">\n' +
+                        '                                            <i id="comment_unlike_icon_'+data['pk']+'" class="iconfont icon-cai1" ></i>\n' +
+                        '                                            <span id="comment_unlike_num_'+data['pk']+'" class="unlike-num ">0</span>\n' +
+                        '                                        </span>\n' +
                         '                                            <span><a href="javascript:reply('+data['pk']+')">回复</a></span>\n' +
                         '                                        </div>\n' +
                         '                                        <div style="clear: both"></div>\n' +
                         '                                    </div>';
-                        $("#root_"+data['root_pk']).append(reply_html);
-                        $('#comment_error').text('回复成功')
-
+                        $("#hr_"+data['root_pk']).before(reply_html);
+                        $('#comment_error').text('回复成功');
+                        console.log(weizhi);
+                        $('html').animate({scrollTop: weizhi},300)
                     }
 
                     // 清空编辑框内容
@@ -363,6 +431,7 @@ function unlike(obj, content_type, object_id,a,b) {
 
                 }else{
                     // 显示错误信息
+
                     $('#comment_error').text(data['message'])
                 }
 
@@ -374,15 +443,22 @@ function unlike(obj, content_type, object_id,a,b) {
         return false;
     });
     function reply(reply_comment_id) {
-        $('#comment_error').text('');
-        // s设置回复父级id值
-        $('#reply_comment_id').val(reply_comment_id);
-        var html = $('#comment_'+ reply_comment_id).html();
-        $('#reply_content').html(html);
-        $('#reply_content_container').show();
-        $('html').animate({scrollTop:$('#comment_form').offset().top-100}, 300, function () {
-            CKEDITOR.instances['id_text'].focus()
-        })
+        if('{{ request.user }}'!=='AnonymousUser'){
+            weizhi = $(this).scrollTop();
+            console.log(weizhi);
+            $('#comment_error').text('');
+            // s设置回复父级id值
+            $('#reply_comment_id').val(reply_comment_id);
+            var html = $('#comment_'+ reply_comment_id).html();
+            $('#reply_content').html(html);
+            $('#reply_content_container').show();
+            $('html').animate({scrollTop:$('#comment_form').offset().top-100}, 300, function () {
+                CKEDITOR.instances['id_text'].focus()
+            })
+        }else{
+            $('#no_login_modal').modal('show')
+        }
+
     }
 </script>
 

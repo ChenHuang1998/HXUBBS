@@ -69,9 +69,37 @@
           </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
   </nav>
+  <ul class="fixbar">
+      <a href="{% url 'publish' %}"><li class="glyphicon glyphicon-pencil"></li></a>
+      <li id="go_top" class="glyphicon glyphicon-arrow-up" style="display: none"></li>
+  </ul>
+  <script>
+      $(function () {
+          //检测屏幕高度
+          var height=$(window).height();
+          //scroll() 方法为滚动事件
+          $(window).scroll(function(){
+              if ($(window).scrollTop()>height){
+                  $("#go_top").css('display','list-item');
+              }else{
+                  $("#go_top").css('display','none');
+              }
+          });
+          $("#go_top").click(function(){
+              $('body,html').animate({scrollTop:0},100);
+              return false;
+
+          });
+      });
+  </script>
   {% block content %}
 
   {% endblock %}
+
+  <footer class="blog-footer">
+    <p style="margin-top: 10px">CopyRight © 2020 ChenHuang</p>
+    <p>Powered by Django & Bootstrap</p>
+  </footer>
   {% block script %}
 
   {% endblock %}

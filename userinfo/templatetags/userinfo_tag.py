@@ -19,3 +19,5 @@ def info_gender(obj):
         return '男'
     elif obj == 0:
         return '女'
+
+

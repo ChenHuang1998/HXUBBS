@@ -13,6 +13,7 @@ class Post(models.Model):
     created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     modify_time = models.DateTimeField(auto_now=True, verbose_name='修改时间')
     comment_count = models.IntegerField(verbose_name='评论数', default=0)
+    read_num = models.IntegerField(verbose_name='点击量', default=0)
     priority = models.IntegerField(verbose_name='是否置顶',default=0)
 
     class Meta:
@@ -35,7 +36,7 @@ class Post(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=128, verbose_name='版块名')
-    image = models.ImageField(upload_to='categoryimg', default='categoryimg/beidouqixing.png')
+    image = models.ImageField(upload_to='categoryimg', default='beidouqixing.png')
     brief = models.CharField(max_length=128, default='欢迎查看本版块帖子',  verbose_name='版块简介')
     post_num = models.IntegerField(default=0, verbose_name='帖子数')
 

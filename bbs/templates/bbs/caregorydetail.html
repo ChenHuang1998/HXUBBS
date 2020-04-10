@@ -49,22 +49,23 @@ active
                 <div class="card cate-card">
                     <div class="card-cont">
                         <div class="card-title">所在版块: {{ category_name }}</div>
+                        <hr>
                         <div class="row" style="margin: 1em;">
-                            <div class="col-md-6" style="margin-bottom: 1em">
+                            <div class="col-md-6" style="margin-bottom: 1em;text-align: center">
                                 <div>主题数</div>
                                 <div>{{ category_detail.theme_set.count }}</div>
                             </div>
-                            <div class="col-md-6" style="margin-bottom: 1em">
+                            <div class="col-md-6" style="margin-bottom: 1em;text-align: center">
                                 <div>帖子数</div>
-                                <div>{{ category_detail.post_num }}</div>
+                                <div>{{ category_detail.post_set.count }}</div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="text-align: center">
                                 <div>今日发帖</div>
-                                <div>0</div>
+                                <div>{{ today_post }}</div>
                             </div>
-                            <div class="col-md-6">
-                                <div>今日阅读</div>
-                                <div>0</div>
+                            <div class="col-md-6" style="text-align: center">
+                                <div>本月发帖</div>
+                                <div>{{ month_post }}</div>
                             </div>
 
                         </div>

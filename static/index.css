@@ -1,6 +1,37 @@
 body {
     padding-top: 90px;
 }
+.fixbar{
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 9999;
+}
+.blog-footer{
+
+    margin-top: 5em;
+    padding: 40px 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e5e5e5;
+}
+.blog-footer p{
+    text-align: center;
+}
+.fixbar li{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 1px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 25px;
+    background-color: #1E9FFF;
+    color: #fff;
+    border-radius: 2px;
+    opacity: .95;
+}
 .publish{
     margin-bottom: 2em;
 }
@@ -178,7 +209,7 @@ div#reply_content_container p{
 .reply-date{
     color: #99a2aa;
     font-size: 12px;
-    margin-left: 12em!important;
+    margin-left: 4em!important;
     margin-top: -0.5em;
 }
 .reply-date>span{
@@ -188,7 +219,7 @@ div#reply_content_container p{
     width: 40px;
     height: 40px;
     float: left;
-    margin-left: 6em;
+    /*margin-left: 6em;*/
 }
 
 .comment-content div:not(:last-child){
@@ -196,7 +227,7 @@ div#reply_content_container p{
     margin-bottom: 0.5em;
 }
 .reply-content div:not(:last-child){
-    margin-left: 10em;
+    margin-left: 3.5em;
     margin-bottom: 0.5em;
 }
 
@@ -233,4 +264,22 @@ div#reply_content_container p{
 
 .endless_container{
     text-align: center;
+}
+
+
+/*用户html*/
+.user-info-title{
+    margin-left: 2em;
+    margin-top: 2em;
+}
+.user-info-content{
+    margin-left: 2em;
+    margin-top: 1em;
+}
+.user-info-date{
+    margin-left: 2em;
+    margin-top: 1em;
+}
+.user-info-date>span{
+    margin-right: 1em;
 }

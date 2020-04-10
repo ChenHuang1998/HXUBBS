@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'comment',
     'userinfo',
     'likes',
+    'new_spider',
 ]
 
 MIDDLEWARE = [
@@ -174,7 +175,7 @@ SIMPLEUI_HOME_INFO = False
 # SIMPLEUI_LOGO = '/static/default.png'
 SIMPLEUI_CONFIG = {
     'system_keep': False,
-    'menu_display': ['首页', '帖子模型', '评论模型', '认证和授权'],
+    'menu_display': ['首页', '帖子模型', '评论模型', '新闻模型', '认证和授权'],
 }
 SIMPLEUI_ICON = {
     '帖子模型': 'fa fa-blog',
@@ -183,7 +184,6 @@ SIMPLEUI_ICON = {
     '版块': 'fas fa-th-large',
     '评论': 'far fa-comment-dots',
     '评论模型': 'far fa-comment-dots',
-
 }
 
 

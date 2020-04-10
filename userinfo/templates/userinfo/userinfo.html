@@ -20,6 +20,14 @@
         width: 270px!important;
         height: 90px!important;
     }
+    #img_detail{
+        width: 150px;
+        height: 150px;
+    }
+    .user-post{
+        height: 120px;
+        border-bottom: 1px solid #fff0ff;
+    }
     </style>
 
 
@@ -36,6 +44,8 @@
                     <h4>{{ user_info.name }} 的个人资料</h4>
                     <hr>
                 </div>
+                {% if request.user.userprofile.name == name %}
+
                 <div class="row">
                     <div class="col-md-3">
                         <div class="userinfo-head" style="margin-left: 1em">
@@ -113,16 +123,105 @@
                         </div>
                     </div>
                 </div>
+                {% else %}
+                    <div class="row">
 
+                        <div class="col-md-9 col-md-offset-1">
+                            <div class="info show" id="info">
+                                <div>
+                                    昵称 : {{ user_info.name }}
+                                </div>
+                                <div>
+                                    个性签名 : {{ user_info.signature|info_is_none }}
+                                </div>
+                                <div>
+                                    性别 :{{ user_info.gender|info_gender }}
+                                </div>
+                                <div>
+                                    学院 : {{ user_info.college|info_is_none }}
+                                </div>
+                                <div>
+                                    班级 : {{ user_info.grade|info_is_none }}
+                                </div>
+                            </div>
 
-
+                        </div>
+                    </div>
+            {% endif %}
             </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div>
+                    <h4 >{{ user_info.name }} 发布的帖子</h4>
+                    {% if new_page > 0 %}
+                        <div style="float: right;margin-top: -2em"><a href="{% url 'userinfo' %}?name={{ name }}&page={{ new_page }}">返回上一页</a></div>
 
+                    {% endif %}
+
+                    <hr>
+
+                </div>
+{#                {% for post in user_info.post_set.all %}#}
+{#                    <div class="user-post">#}
+{#                        <div class="user-info-title">#}
+{#                            <span class="label label-default">{{ post.theme }}</span>#}
+{#                            {{ post.title }}#}
+{#                        </div>#}
+{#                        <div class="user-info-content">{{ post.content|safe|striptags|truncatechars:60 }}...</div>#}
+{#                        <div class="user-info-date">#}
+{#                            <span>{{ post.created_time }}</span>#}
+{#                            <span>点击({{ post.read_num }})</span>#}
+{#                            <span>评论({{ post.comment_count }})</span>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+                {% include 'userinfo/user_info_post.html' %}
+
+                <div>
+
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-md-4">
         <div class="panel panel-default">
-            <h3>{{ user_info.name }}</h3>
+            <div class="panel-body">
+                <div style="text-align: center;">
+                    <img src="/media/head_img/{{ user_info.image }}" alt="" class="img-circle" id="img_detail">
+                    <h4>{{ user_info.name }}</h4>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4" style="border-right: 1px solid #fff0ff;text-align: center">
+                        <div>{{ user_info.post_set.count }}</div>
+                        <div>发布</div>
+
+                    </div>
+                    <div class="col-xs-4" style="border-right: 1px solid #fff0ff;text-align: center">
+                        <div>{{ liked_count }}</div>
+                        <div>获赞</div>
+                    </div>
+                    <div class="col-xs-4" style="text-align: center">
+                        <div>{{ user_info.comments.count }}</div>
+                        <div>评论</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4>热门帖子</h4>
+                <hr>
+                {% for hot in hot_post %}
+                 <div style="padding: 0.5em">
+                     <span>{{ hot.title|truncatechars:'20' }}</span>
+                     <p style="color: #99a2aa; margin-top: 0.5em;">点击 {{ hot.read_num }}</p>
+                 </div>
+                {% endfor %}
+
+
+            </div>
         </div>
     </div>
 </div>
@@ -130,6 +229,11 @@
 {% endblock %}
 
 {% block script %}
+    <script src="/static/el-pagination/js/el-pagination.js"></script>
+    <script>$.endlessPaginate({
+            paginateOnScroll: true,
+            paginateOnScrollChunkSize: 1
+        });</script>
     <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
@@ -150,6 +254,7 @@
         reader_file.readAsDataURL(img_file);
         reader_file.onload = function (ev) {
             $('#img-show').attr('src', ev.target.result);
+            $('#img_detail').attr('src', ev.target.result);
             var formdata = new FormData();
             formdata.append('img_name', img_file.name);
             formdata.append('img_file', img_file);

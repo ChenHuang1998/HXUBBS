@@ -20,7 +20,7 @@ class Comment(models.Model):
     reply_to = models.ForeignKey(UserProfile, null=True, related_name='replies', on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ['-comment_time']
+        ordering = ['comment_time']
         verbose_name = '评论'
         verbose_name_plural = verbose_name
 
