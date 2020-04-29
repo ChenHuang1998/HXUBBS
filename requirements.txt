@@ -1,0 +1,17 @@
+certifi==2018.8.24
+chardet==3.0.4
+Django==2.2.1
+django-ckeditor==5.9.0
+django-el-pagination==3.3.0
+django-js-asset==1.2.2
+django-mdeditor==0.1.17
+django-simpleui==3.9.1
+djangorestframework==3.11.0
+idna==2.9
+lxml==4.5.0
+Markdown==3.1.1
+Pillow==7.0.0
+pytz==2019.3
+requests==2.23.0
+sqlparse==0.3.0
+urllib3==1.25.8

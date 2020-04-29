@@ -31,6 +31,7 @@ urlpatterns = [
     re_path(r'favicon\.png$', favicon_view),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('mdeditor/', include('mdeditor.urls')),
     path('', include('bbs.urls')),
     path('comment/', include('comment.urls')),
     path('user/', include('userinfo.urls')),

@@ -12,7 +12,12 @@
             <span>{{ post.created_time }}</span>
             <span>点击({{ post.read_num }})</span>
             <span>评论({{ post.comment_count }})</span>
+            {% if request.user.userprofile.name == name %}
+            <span><a href="#" data-toggle="modal" data-target="#del_modal" onclick="del_post({{ post.id }})">删除</a></span>
+            {% endif %}
+
         </div>
     </div>
+
 {% endfor %}
 {% show_more  '加载更多' '加载中' 'show-more' %}

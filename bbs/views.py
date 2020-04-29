@@ -1,10 +1,14 @@
 import datetime
 
 import requests
+from django.urls import reverse
 from lxml import etree
 import time
 from django.shortcuts import render, HttpResponse, redirect,get_object_or_404
 from django.http import JsonResponse
+from django.views.decorators.cache import cache_page
+from django.utils.cache import get_cache_key
+from django.core.cache import cache
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import Count
@@ -22,7 +26,6 @@ from django.contrib.auth.decorators import login_required
 class PostList(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-
 
 def index(request):
     post_list = Post.objects.all()
@@ -56,7 +59,7 @@ def acc_login(request):
         if login_form.is_valid():
             user = login_form.cleaned_data['user']
             login(request, user)
-            return redirect(request.GET.get('from'), '/')
+            return redirect(request.GET.get('from', '/'), )
     else:
         login_form = LoginForm()
     return render(request, 'bbs/login.html', locals())
@@ -78,9 +81,11 @@ def register(request):
             user_profile = UserProfile(user=user, name=username)
             user_profile.save()
             # 登录用户
-            user_login = authenticate(username=username, password=password)
-            login(request, user_login)
-            return redirect(request.GET.get('from'), '/')
+            # user_login = authenticate(username=username, password=password)
+            # login(request, user_login)
+
+            return redirect('http://127.0.0.1:8000/login/?from='+request.GET.get('from'))
+
     else:
         reg_form = RegForm()
     return render(request, 'bbs/register.html',locals())
@@ -132,6 +137,7 @@ def caregorydetail(request):
 
 
 # 帖子详情页
+# @cache_page(60)
 def postdetail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     post.read_num += 1

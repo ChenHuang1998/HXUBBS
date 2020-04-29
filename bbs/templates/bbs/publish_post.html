@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}
+河西学院BBS站|发表帖子
+{% endblock %}
 {% block style %}
     <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
     <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
@@ -44,31 +47,35 @@
                                     <label style="float: left">内容：</label>
                                     {{ pubform.media }}
                                     {{ pubform.as_p }}
-                                    <script>
-                                        CKEDITOR.on('dialogDefinition', function(ev) {
-                                            var dd = ev.data.definition;
-
-                                            if(ev.data.name == 'image') {
-                                                dd.onLoad = function () {
-                                                    var dialog = CKEDITOR.dialog.getCurrent();
-                                                    // make upload default tab
-                                                    this.selectPage('Upload');
-                                                    // hide unwanted tab
-                                                    dialog.hidePage( 'Link' );
-                                                    dialog.hidePage( 'advanced' );
-                                                    dialog.hidePage('info');
-
-                                                    var uploadTab = dd.getContents('Upload');
-                                                    var uploadButton = uploadTab.get('uploadButton');
-                                                    uploadButton['filebrowser']['onSelect'] = function( fileUrl, errorMessage ) {
-                                                        dialog.getContentElement('info', 'txtUrl').setValue(fileUrl);
-                                                        $(".cke_dialog_ui_button_ok span").click();
-                                                    }
-                                                };
-                                            }
-                                        })
-                                    </script>
                                 </div>
+                            <script>
+                                $('#id_content-wmd-wrapper').css('margin-left','3em')
+                            </script>
+{#                                    <script>#}
+{#                                        CKEDITOR.on('dialogDefinition', function(ev) {#}
+{#                                            var dd = ev.data.definition;#}
+{##}
+{#                                            if(ev.data.name == 'image') {#}
+{#                                                dd.onLoad = function () {#}
+{#                                                    var dialog = CKEDITOR.dialog.getCurrent();#}
+{#                                                    // make upload default tab#}
+{#                                                    this.selectPage('Upload');#}
+{#                                                    // hide unwanted tab#}
+{#                                                    dialog.hidePage( 'Link' );#}
+{#                                                    dialog.hidePage( 'advanced' );#}
+{#                                                    dialog.hidePage('info');#}
+{##}
+{#                                                    var uploadTab = dd.getContents('Upload');#}
+{#                                                    var uploadButton = uploadTab.get('uploadButton');#}
+{#                                                    uploadButton['filebrowser']['onSelect'] = function( fileUrl, errorMessage ) {#}
+{#                                                        dialog.getContentElement('info', 'txtUrl').setValue(fileUrl);#}
+{#                                                        $(".cke_dialog_ui_button_ok span").click();#}
+{#                                                    }#}
+{#                                                };#}
+{#                                            }#}
+{#                                        })#}
+{#                                    </script>#}
+
 
                                 <div class="publish-button">
                                     <span id="error_publish" style="margin-right: 4em;color: red"></span>

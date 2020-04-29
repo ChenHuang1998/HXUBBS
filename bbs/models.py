@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
+from mdeditor.fields import MDTextField
 from django.db import models
 # Create your models here.
 

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.min.css">
       <link rel="stylesheet" href="/static/index.css">
       <link rel="stylesheet" href="//at.alicdn.com/t/font_1690394_b4r2pbtd4t6.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
       <script type="text/javascript" src="/static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
       <script type="text/javascript" src="/static/vue/vue.js"></script>
@@ -70,9 +71,31 @@
       </div><!-- /.container-fluid -->
   </nav>
   <ul class="fixbar">
-      <a href="{% url 'publish' %}"><li class="glyphicon glyphicon-pencil"></li></a>
+      {% if request.user.is_authenticated %}
+        <a href="{% url 'publish' %}"><li class="glyphicon glyphicon-pencil"></li></a>
+      {% else %}
+          <a><li class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#no_login_modal"></li></a>
+      {% endif %}
+
+
       <li id="go_top" class="glyphicon glyphicon-arrow-up" style="display: none"></li>
   </ul>
+
+  <div class="modal fade" id="no_login_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">请先登录</h4>
+                </div>
+                <div class="modal-body">您未登录，不能进行操作，快去登录吧</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <a href="{% url 'login' %}?from={{ request.get_full_path }}"  class="btn btn-primary">去登录</a>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
   <script>
       $(function () {
           //检测屏幕高度

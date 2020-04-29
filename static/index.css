@@ -54,6 +54,19 @@ body {
 .card-body h5{
     margin-left: 8em;
 }
+
+.card a{
+
+    position: relative;
+    -webkit-transition: 0.5s;
+    transition: 0.3s;
+}
+.card a:hover{
+    /*color: red;*/
+    display: inline-block;
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+}
 .anniu{
     margin-bottom: 1em
 }

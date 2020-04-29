@@ -1,4 +1,6 @@
 import random
+
+import markdown
 from django import template
 from django.contrib.contenttypes.models import ContentType
 
@@ -17,3 +19,12 @@ def get_like_user(obj):
         like_count, created = LikeCount.objects.get_or_create(content_type=content_type, object_id=i.id)
         liked_count += like_count.liked_num
     return liked_count
+
+@register.filter
+def markcontent(obj):
+    return markdown.markdown(obj,
+                             extensions=[
+                                 'markdown.extensions.extra',
+                                 'markdown.extensions.codehilite',
+                                 'markdown.extensions.toc',
+                             ])

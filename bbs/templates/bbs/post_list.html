@@ -2,19 +2,32 @@
 {% load el_pagination_tags %}
 {% lazy_paginate post_list %}
 {% for post in post_list %}
-
     <div class="card">
         <div class="card-body">
             <img src="/media/head_img/{{ post.author.image }}" alt="" class="img-circle">
-            <h5><span class="label label-warning">{{ post.category }}</span><span class="label label-info" style="margin: 0 1em">{{ post.theme }}</span><a href="{% url 'postdetail' post.id %}">{{ post.title|slice:20 }}</a></h5>
+            <h5 style="margin-bottom: 1em;">
+                <span class="label label-warning">{{ post.category }}</span>
+                <span class="label label-info" style="margin: 0 1em">{{ post.theme }}</span>
+                <a href="{% url 'postdetail' post.id %}" style="font-size: 16px;" class="text-decoration-none text-overflow">{{ post.title|slice:40 }}</a>
+            </h5>
             <div class="detail">
                 <span class="glyphicon glyphicon-user" style="color: #7f7f7f"></span>
-                <span>{{ post.author }}</span>
-                <span>发表于 {{ post.created_time }}</span>
+                <span style="margin-right: 1em">{{ post.author }}</span>
+                <span style="margin-right: 1em">发表于 {{ post.created_time }}</span>
                 <i class="iconfont icon-pinglun"></i>
                 <span> {% get_comment_count post %}</span>
             </div>
         </div>
     </div>
+    <script>
+    $('.card').hover(function () {
+        $(this).addClass('animated pulse');
+    },
+         function(){
+     $(this).removeClass('animated pulse')
+    }
+    );
+
+    </script>
 {% endfor %}
 {% show_more  '加载更多' '加载中' 'show-more' %}

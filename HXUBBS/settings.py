@@ -25,7 +25,7 @@ SECRET_KEY = '&pzzks#3+6xz*-emyf_$l7pvexgjz9^4snx)uu*54w0a+61-@='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mdeditor',
     'el_pagination',
     'rest_framework',
     'ckeditor',
@@ -137,8 +138,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# ckeditor配置
 CKEDITOR_UPLOAD_PATH = 'upload/'
-
+CKEDITOR_RESTRICT_BY_USER=True
 CKEDITOR_CONFIGS = {
     'default':{},
     'comment_ckeditor': {
@@ -171,6 +173,34 @@ CKEDITOR_CONFIGS = {
         'resize_enabled': False,
     }
 }
+
+# mdeditor配置
+MDEDITOR_CONFIGS = {
+    'default': {},
+    'post_config': {
+        'width': '100%',  # 自定义编辑框宽度
+        'heigth': 150,   # 自定义编辑框高度
+        'toolbar': ["undo", "redo", "|",
+                    "link", "image", "hr",
+                    ],  # 自定义编辑框工具栏
+        'upload_image_formats': ["jpg", "jpeg", "gif", "png", "bmp", "webp"],  # 图片上传格式类型
+        'image_folder': 'editor',  # 图片保存文件夹名称
+        'theme': 'default',  # 编辑框主题 ，dark / default
+        'preview_theme': 'default',  # 预览区域主题， dark / default
+        'editor_theme': 'default',  # edit区域主题，pastel-on-dark / default
+        'toolbar_autofixed': True,  # 工具栏是否吸顶
+        'search_replace': True,  # 是否开启查找替换
+        'emoji': True,  # 是否开启表情功能
+        'tex': True,  # 是否开启 tex 图表功能
+        'flow_chart': True,  # 是否开启流程图功能
+        'sequence': True,  # 是否开启序列图功能
+        'watch': False,  # 实时预览
+        'lineWrapping': True,  # 自动换行
+        'lineNumbers': False  # 行号
+    }
+}
+
+# simpleui配置
 SIMPLEUI_HOME_INFO = False
 # SIMPLEUI_LOGO = '/static/default.png'
 SIMPLEUI_CONFIG = {

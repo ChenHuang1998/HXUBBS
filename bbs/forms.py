@@ -5,9 +5,11 @@ from django.contrib.auth.models import User
 from bbs.models import UserProfile, Post
 from ckeditor_uploader.fields import RichTextUploadingFormField, RichTextUploadingField
 from ckeditor.widgets import CKEditorWidget
+
+
 class LoginForm(forms.Form):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input-material', 'placeholder': '请输入用户名'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input-material', 'placeholder': '密码'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input-material', 'placeholder': '请输入用户名'}),error_messages={'required':'不能为空'})
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input-material', 'placeholder': '密码'}),error_messages={'required':'不能为空'})
 
     def clean(self):
         username = self.cleaned_data['username']

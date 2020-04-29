@@ -19,6 +19,13 @@ active
        margin-left: 9em;
        font-size: 10px;
    }
+    .text-overflow{
+    display: inline-block;
+    width: 220px;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    white-space: nowrap
+}
 
     </style>
 {% endblock %}
@@ -76,7 +83,11 @@ active
         </div>
 
         <div class="col-sm-3">
+        {% if request.user.is_authenticated %}
             <div class="publish"><a href="{% url 'publish' %}" class="btn bg-primary btn-block">发布帖子</a></div>
+        {% else %}
+            <div class="publish"><a class="btn bg-primary btn-block" data-toggle="modal" data-target="#no_login_modal">发布帖子</a></div>
+        {% endif %}
 
             <div class="list-group">
 

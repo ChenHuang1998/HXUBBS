@@ -226,6 +226,22 @@
     </div>
 </div>
 </div>
+
+<div class="modal fade" id="del_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">删除帖子</h4>
+                </div>
+                <div class="modal-body">确认删除帖子，删除后不能恢复</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <a href="" id="confirm_del" class="btn btn-primary">确定删除</a>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
 {% endblock %}
 
 {% block script %}
@@ -321,6 +337,24 @@
 
         }
 
+    }
+    function del_post(id) {
+        $('#confirm_del').click(function () {
+            $.ajax({
+                url:'{% url 'del_post' %}?post='+id,
+                type:'get',
+                data:'',
+                success:function (data) {
+                    {#console.log(data)#}
+                    {#alert('删除成功')#}
+                },
+                error:function (error) {
+
+                }
+            }
+            );
+
+        })
     }
     </script>
 {% endblock %}

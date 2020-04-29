@@ -1,9 +1,9 @@
 import time
 
 from django.contrib.contenttypes.models import ContentType
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.http import JsonResponse
-from bbs.models import UserProfile
+from bbs.models import UserProfile, Post
 # Create your views here.
 from likes.models import LikeCount
 
@@ -56,3 +56,7 @@ def modify_info(request):
         user.save()
         return JsonResponse({'status': 200})
 
+def del_post(request):
+    post_id = request.GET.get('post')
+    Post.objects.get(id=post_id).delete()
+    return JsonResponse({'status': 200})
