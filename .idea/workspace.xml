@@ -2,36 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48fc4504-139d-4012-b951-eef58be0f1a9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/02d3fb03-062a-4f7e-b957-e65498f3b482.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/02d3fb03-062a-4f7e-b957-e65498f3b482.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HXUBBS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/HXUBBS/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HXUBBS/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/HXUBBS/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bbs/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/bbs/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bbs/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/bbs/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bbs/templates/bbs/caregorydetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bbs/templates/bbs/caregorydetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bbs/templates/bbs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/bbs/templates/bbs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bbs/templates/bbs/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/bbs/templates/bbs/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bbs/templates/bbs/post_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/bbs/templates/bbs/post_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bbs/templates/bbs/postdetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bbs/templates/bbs/postdetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bbs/templates/bbs/publish_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/bbs/templates/bbs/publish_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bbs/templatetags/bbs_tags.py" beforeDir="false" afterPath="$PROJECT_DIR$/bbs/templatetags/bbs_tags.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bbs/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/bbs/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comment/migrations/0002_auto_20200318_1044.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comment/migrations/0003_auto_20200318_1136.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comment/migrations/0004_auto_20200318_1603.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comment/migrations/0005_auto_20200319_1740.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comment/migrations/0006_auto_20200319_1748.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comment/migrations/0007_auto_20200319_1755.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comment/migrations/0008_auto_20200319_1759.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comment/migrations/0009_auto_20200325_1149.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/ckeditor/ckeditor/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/ckeditor/ckeditor/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/ckeditor/ckeditor/plugins/image/dialogs/image.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/ckeditor/ckeditor/plugins/image/dialogs/image.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userinfo/templates/userinfo/user_info_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/userinfo/templates/userinfo/user_info_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userinfo/templates/userinfo/userinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/userinfo/templates/userinfo/userinfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userinfo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/userinfo/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userinfo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/userinfo/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbs/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/bbs/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,35 +51,61 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="HXUBBS" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bbs/templates/bbs/post_list.html">
+        <entry file="file://$PROJECT_DIR$/HXUBBS/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="10" column="123" selection-start-line="10" selection-start-column="123" selection-end-line="10" selection-end-column="123" />
+            <state relative-caret-position="4072">
+              <caret line="216" column="1" selection-start-line="216" selection-start-column="1" selection-end-line="216" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bbs/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1353">
+              <caret line="75" column="42" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
               <folding>
-                <element signature="n#style#0;n#h5#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#h5#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#0#43#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/index.css">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bbs/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="67" column="32" lean-forward="true" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+            <state relative-caret-position="185">
+              <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bbs/templates/bbs/index.html">
+        <entry file="das://c38ef21e-c718-4029-858b-035d9f6cea94/schema/main/table/bbs_post">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bbs/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+            <state relative-caret-position="42">
+              <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,7 +141,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bbs/__init__.py" />
         <option value="$PROJECT_DIR$/comment/admin.py" />
         <option value="$PROJECT_DIR$/bbs/admin.py" />
         <option value="$PROJECT_DIR$/comment/templatetags/comment_tags.py" />
@@ -170,8 +174,6 @@
         <option value="$PROJECT_DIR$/HXUBBS/urls.py" />
         <option value="$PROJECT_DIR$/bbs/templatetags/bbs_tags.py" />
         <option value="$PROJECT_DIR$/bbs/templates/bbs/caregorydetail.html" />
-        <option value="$PROJECT_DIR$/bbs/models.py" />
-        <option value="$PROJECT_DIR$/bbs/forms.py" />
         <option value="$PROJECT_DIR$/bbs/templates/bbs/publish_post.html" />
         <option value="$PROJECT_DIR$/bbs/templates/bbs/postdetail.html" />
         <option value="$PROJECT_DIR$/../Anaconda/anaconda3/envs/DjangoPath/lib/python3.5/site-packages/ckeditor_uploader/urls.py" />
@@ -187,18 +189,22 @@
         <option value="$PROJECT_DIR$/bbs/templates/bbs/post_list.html" />
         <option value="$PROJECT_DIR$/bbs/templates/bbs/index.html" />
         <option value="$PROJECT_DIR$/static/index.css" />
+        <option value="$PROJECT_DIR$/bbs/models.py" />
+        <option value="$PROJECT_DIR$/bbs/forms.py" />
+        <option value="$PROJECT_DIR$/bbs/tests.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="76" />
-    <option name="y" value="236" />
-    <option name="width" value="1280" />
-    <option name="height" value="704" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1440" />
+    <option name="y" value="74" />
+    <option name="width" value="1433" />
+    <option name="height" value="860" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <showMembers ProjectPane="false" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -217,48 +223,7 @@
             <path>
               <item name="HXUBBS" type="b2602c69:ProjectViewProjectNode" />
               <item name="HXUBBS" type="462c0819:PsiDirectoryNode" />
-              <item name="bbs" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HXUBBS" type="b2602c69:ProjectViewProjectNode" />
               <item name="HXUBBS" type="462c0819:PsiDirectoryNode" />
-              <item name="bbs" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="bbs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HXUBBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HXUBBS" type="462c0819:PsiDirectoryNode" />
-              <item name="likes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HXUBBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HXUBBS" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HXUBBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HXUBBS" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HXUBBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HXUBBS" type="462c0819:PsiDirectoryNode" />
-              <item name="userinfo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HXUBBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HXUBBS" type="462c0819:PsiDirectoryNode" />
-              <item name="userinfo" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HXUBBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HXUBBS" type="462c0819:PsiDirectoryNode" />
-              <item name="userinfo" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="userinfo" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -276,7 +241,7 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -398,23 +363,24 @@
       <workItem from="1583901784316" duration="48409000" />
       <workItem from="1584355212017" duration="139752000" />
       <workItem from="1585730298186" duration="97412000" />
-      <workItem from="1587175312779" duration="25472000" />
+      <workItem from="1587175312779" duration="38257000" />
+      <workItem from="1588570854364" duration="7620000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="352919000" />
+    <option name="totallyTimeSpent" value="373324000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="1440" y="74" width="1433" height="860" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17609046" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49899396" visible="true" weight="0.1588785" />
+      <window_info id="Structure" order="1" sideWeight="0.501006" side_tool="true" weight="0.1588785" />
+      <window_info id="Favorites" order="2" sideWeight="0.501006" side_tool="true" weight="0.1588785" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32876712" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49919224" visible="true" weight="0.2890411" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49919224" weight="0.359375" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3410959" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -423,14 +389,14 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32876712" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50080776" side_tool="true" weight="0.2547945" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.11917808" />
-      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3372396" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.3294271" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32876712" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" weight="0.32956383" />
+      <window_info anchor="right" id="Database" order="4" weight="0.29403308" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1736672" />
@@ -481,304 +447,6 @@
     <SUITE FILE_PATH="coverage/HXUBBS$utils.coverage" NAME="utils Coverage Results" MODIFIED="1588036071679" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/new_spider" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/new_spider/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comment/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-82">
-          <caret line="33" column="25" lean-forward="true" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HXUBBS/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#222#231#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comment/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Anaconda/anaconda3/envs/DjangoPath/lib/python3.5/gettext.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="449" selection-start-line="449" selection-end-line="449" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Anaconda/anaconda3/envs/DjangoPath/lib/python3.5/site-packages/django/utils/translation/trans_real.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="296" selection-start-line="296" selection-end-line="296" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Anaconda/anaconda3/envs/DjangoPath/lib/python3.5/site-packages/django/utils/translation/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Anaconda/anaconda3/envs/DjangoPath/lib/python3.5/site-packages/django/forms/fields.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="52" column="49" lean-forward="true" selection-start-line="52" selection-start-column="49" selection-end-line="52" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bbs/templates/bbs/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="41" column="32" lean-forward="true" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/vendor/jquery-validation/jquery.validate.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="4235" selection-start-line="3" selection-start-column="4228" selection-end-line="3" selection-end-column="4235" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Anaconda/anaconda3/envs/DjangoPath/lib/python3.5/site-packages/django/forms/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="184" selection-start-line="184" selection-end-line="184" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Anaconda/anaconda3/envs/DjangoPath/lib/python3.5/site-packages/django/core/handlers/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bbs/templates/bbs/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bbs/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comment/migrations/0009_auto_20200325_1149.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comment/migrations/0008_auto_20200319_1759.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#49#89#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comment/migrations/0007_auto_20200319_1755.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-79">
-          <folding>
-            <element signature="e#49#89#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comment/migrations/0001_initial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-194">
-          <folding>
-            <element signature="e#49#89#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comment/migrations/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bbs/templatetags/bbs_tags.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Downloads/Infinite War/infinitewar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6544">
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Desktop/Infinite War/infinitewar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/new_spider/views.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/new_spider/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/new_spider/tests.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/new_spider/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/new_spider/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/bbs_post">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bbs/templates/bbs/caregorydetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/likes/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bbs/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bbs/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bbs/templates/bbs/publish_post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="47" column="55" selection-start-line="47" selection-start-column="55" selection-end-line="47" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Anaconda/anaconda3/envs/DjangoPath/lib/python3.5/site-packages/django/urls/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#198#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Anaconda/anaconda3/envs/DjangoPath/lib/python3.5/site-packages/ckeditor_uploader/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="53" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HXUBBS/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
-          <folding>
-            <element signature="e#630#672#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HXUBBS/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="143" column="20" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/ckeditor/ckeditor/plugins/image/dialogs/image.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -793,23 +461,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bbs/templates/bbs/postdetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1108">
-          <caret line="197" column="23" lean-forward="true" selection-start-line="197" selection-start-column="23" selection-end-line="197" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bbs/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="30" column="34" lean-forward="true" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -883,8 +534,391 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="67" column="32" lean-forward="true" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+        <state relative-caret-position="285">
+          <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/bbs_post.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-134">
+          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_post">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_post</OriginalElement>
+          <nodes>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_category</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_theme</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_post</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.auth_user</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_userprofile</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.5360824742268041" x="198.0" y="417.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_category">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_category</OriginalElement>
+          <nodes>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_category</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.5000000000000004" x="76.0" y="33.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/django_session">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/auth_group">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/auth_group_permissions">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/auth_user_groups">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/auth_user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/02d3fb03-062a-4f7e-b957-e65498f3b482.SCHEMA:main">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>02d3fb03-062a-4f7e-b957-e65498f3b482.SCHEMA:main</OriginalElement>
+          <nodes>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.auth_user_user_permissions</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.comment_comment</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.sqlite_sequence</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.auth_group_permissions</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.django_migrations</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_theme</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.auth_permission</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.likes_unlikerecord</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_post</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.likes_likerecord</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.auth_group</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.django_content_type</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.new_spider_news</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.auth_user_groups</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_category</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.django_admin_log</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_userprofile</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.likes_likecount</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.likes_unlikecount</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.auth_user</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.sqlite_master</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.django_session</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.9" x="1256.0" y="360.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/new_spider_news">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/comment_comment.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-202">
+          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/new_spider_news.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/02d3fb03-062a-4f7e-b957-e65498f3b482">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>02d3fb03-062a-4f7e-b957-e65498f3b482</OriginalElement>
+          <nodes>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.auth_user_user_permissions</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.comment_comment</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.sqlite_sequence</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.auth_group_permissions</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.auth_user</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.sqlite_master</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.django_migrations</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_post</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.likes_likerecord</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.likes_unlikerecord</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.django_content_type</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.likes_likecount</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_theme</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.auth_group</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_category</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.django_admin_log</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.bbs_userprofile</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.auth_permission</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.likes_unlikecount</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.new_spider_news</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.auth_user_groups</node>
+            <node x="" y="">02d3fb03-062a-4f7e-b957-e65498f3b482.TABLE:main.django_session</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.4709832134292566" x="1033.0" y="553.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/bbs_userprofile">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/likes_likecount">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Anaconda/anaconda3/envs/DjangoPath/lib/python3.5/site-packages/django/contrib/auth/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" selection-start-line="6" selection-end-line="47" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bbs/templates/bbs/postdetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9240">
+          <caret line="462" selection-start-line="462" selection-end-line="462" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="10" selection-start-line="10" selection-end-line="60" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/auth_permission">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/auth_user_user_permissions">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bbs/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/tests.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/migrations/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="das://02d3fb03-062a-4f7e-b957-e65498f3b482/schema/main/table/comment_comment">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HXUBBS/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/02d3fb03-062a-4f7e-b957-e65498f3b482/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="das://c38ef21e-c718-4029-858b-035d9f6cea94/schema/main/table/comment_comment">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c38ef21e-c718-4029-858b-035d9f6cea94/schema/main/table/auth_user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c38ef21e-c718-4029-858b-035d9f6cea94/schema/main/table/bbs_userprofile">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bbs/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-107">
+          <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bbs/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bbs/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1353">
+          <caret line="75" column="42" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HXUBBS/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4072">
+          <caret line="216" column="1" selection-start-line="216" selection-start-column="1" selection-end-line="216" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Anaconda/anaconda3/envs/DjangoPath/lib/python3.5/site-packages/django/middleware/common.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="92" selection-start-line="92" selection-end-line="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c38ef21e-c718-4029-858b-035d9f6cea94/schema/main/table/bbs_post">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bbs/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bbs/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

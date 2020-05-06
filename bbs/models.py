@@ -72,7 +72,7 @@ class UserProfile(models.Model):
     image = models.ImageField(verbose_name='头像', upload_to='head_img', default='default.png')
 
     class Meta:
-        verbose_name = "自定义用户"  # 表名改成中文名
+        verbose_name = "用户资料"  # 表名改成中文名
         verbose_name_plural = verbose_name
 
     def __str__(self):
