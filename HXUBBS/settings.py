@@ -138,6 +138,15 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# session配置
+SESSION_COOKIE_NAME = "sessionid"
+SESSION_COOKIE_PATH = "/"
+SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_AGE = 60*20
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_SAVE_EVERY_REQUEST = False
+
 # ckeditor配置
 CKEDITOR_UPLOAD_PATH = 'upload/'
 CKEDITOR_RESTRICT_BY_USER=True
@@ -202,18 +211,20 @@ MDEDITOR_CONFIGS = {
 
 # simpleui配置
 SIMPLEUI_HOME_INFO = False
-# SIMPLEUI_LOGO = '/static/default.png'
+SIMPLEUI_LOGO = '/static/imgs/后台开发.png'
 SIMPLEUI_CONFIG = {
     'system_keep': False,
     'menu_display': ['首页', '帖子模型', '评论模型', '新闻模型', '认证和授权'],
 }
 SIMPLEUI_ICON = {
     '帖子模型': 'fa fa-blog',
-    '主题': 'fab fa-ethereum',
     '帖子': 'far fa-envelope',
     '版块': 'fas fa-th-large',
+    '主题': 'fab fa-ethereum',
     '评论': 'far fa-comment-dots',
-    '评论模型': 'far fa-comment-dots',
+    '评论模型': 'far fa-comment',
+    '新闻模型': 'far fa-newspaper',
+    '新闻': 'fas fa-newspaper',
 }
 
 

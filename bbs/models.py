@@ -1,5 +1,7 @@
+from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.html import format_html
 from mdeditor.fields import MDTextField
 from django.db import models
 # Create your models here.
@@ -8,7 +10,7 @@ from django.db import models
 class Post(models.Model):
     title = models.CharField(max_length=128, verbose_name='标题')
     category = models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name='版块')
-    theme = models.ForeignKey('Theme', on_delete=models.CASCADE, default=1)
+    theme = models.ForeignKey('Theme', on_delete=models.CASCADE)
     content = RichTextUploadingField(verbose_name='帖子内容')
     author = models.ForeignKey('UserProfile', on_delete=models.CASCADE, verbose_name='作者')
     created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
@@ -37,7 +39,7 @@ class Post(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=128, verbose_name='版块名')
-    image = models.ImageField(upload_to='categoryimg', default='beidouqixing.png')
+    image = models.ImageField(upload_to='categoryimg', default='categoryimg/beidouqixing.png')
     brief = models.CharField(max_length=128, default='欢迎查看本版块帖子',  verbose_name='版块简介')
     post_num = models.IntegerField(default=0, verbose_name='帖子数')
 
@@ -61,6 +63,17 @@ class Theme(models.Model):
     def __str__(self):
         return self.name
 
+
+class Notice(models.Model):
+    content = RichTextField(verbose_name='公告信息')
+
+    def __str__(self):
+        return self.content
+
+
+    class Meta:
+        verbose_name = "公告"  # 表名改成中文名
+        verbose_name_plural = verbose_name
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

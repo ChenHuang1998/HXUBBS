@@ -19,6 +19,7 @@
             </div>
         </div>
     </div>
+
     <script>
     $('.card').hover(function () {
         $(this).addClass('animated pulse');
@@ -29,5 +30,7 @@
     );
 
     </script>
+    {% empty %}
+    <h3>当前版块还没有帖子，赶紧去发一个！</h3>
 {% endfor %}
 {% show_more  '加载更多' '加载中' 'show-more' %}

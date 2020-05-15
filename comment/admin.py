@@ -4,7 +4,8 @@ from comment.models import *
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'text', 'comment_time', 'user']
-
+    list_display = ['id', 'get_text', 'comment_time', 'user']
+    list_display_links = ['id', 'get_text', 'comment_time', 'user']
+    search_fields = ['get_text','user']
 
 admin.site.register(Comment, CommentAdmin)

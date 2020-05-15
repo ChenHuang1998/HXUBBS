@@ -1,4 +1,5 @@
 import datetime
+import random
 
 import requests
 from django.urls import reverse
@@ -11,7 +12,7 @@ from django.utils.cache import get_cache_key
 from django.core.cache import cache
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.contenttypes.models import ContentType
-from django.db.models import Count
+from django.db.models import Count, Q
 from bbs.models import *
 from comment.models import Comment
 from bbs.forms import LoginForm, RegForm, PublishForm
@@ -29,6 +30,7 @@ class PostList(generics.ListAPIView):
 
 def index(request):
     post_list = Post.objects.all()
+    notice = Notice.objects.all().first()
     all_category_list = Category.objects.all().annotate(post_count=Count('post')).order_by('-post_count')
     all_user = UserProfile.objects.all().annotate(post_count=Count('post')).order_by('-post_count')
     all_theme = Theme.objects.all().annotate(post_count=Count('post')).order_by('-post_count')
@@ -141,7 +143,7 @@ def caregorydetail(request):
 def postdetail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     post.read_num += 1
-    post.save()
+    post.save(update_fields=['read_num'])
     post_content_type = ContentType.objects.get_for_model(post)
     comments = Comment.objects.filter(content_type=post_content_type, object_id=post_id, parent=None).order_by('-comment_time')
     data = {'content_type': post_content_type.model,'object_id': post_id,'reply_comment_id': 0}
@@ -163,8 +165,11 @@ def publish(request):
         title = request.POST.get('post-title')
         post_content = request.POST.get('editor1')
         user_id = request.user.id
+        cate = Category.objects.get(id=post_category)
+        cate.post_num += 1
+        cate.save(update_fields=['post_num'])
         post = Post()
-        post.category = Category.objects.get(id=post_category)
+        post.category = cate
         post.theme = Theme.objects.get(name=post_theme, category=post_category)
         post.title = title
         post.content = content
@@ -184,6 +189,21 @@ def linked(request):
     return JsonResponse(data)
 
 
+def search(request):
+    keyword = request.GET.get('search')
+    if keyword:
+        post_list = Post.objects.filter(Q(title__contains=keyword) |
+                                   Q(theme__name__contains=keyword) |
+                                   Q(category__name__contains=keyword))
+        post_count = len(post_list)
+        category_list = Category.objects.filter(Q(name__contains=keyword) |
+                                                Q(brief__contains=keyword))
+        cate_count = len(category_list)
+        user_list = UserProfile.objects.filter(Q(name__contains=keyword))
+        user_count = len(user_list)
+        return render(request,'bbs/search.html', locals())
+
+
 def addpost(request):
     for i in range(6):
         base_url = 'http://jianyuluntan.com/?order=&page={}'.format(i)
@@ -197,11 +217,14 @@ def addpost(request):
             detail_str = etree.HTML(detail.text)
             content = detail_str.xpath('string(//div[@class="zhengwen"])').strip()
             user = UserProfile.objects.first()
-            category = Category.objects.first()
+            category = Category.objects.get(id=4)
+            theme_list = [2,3,8,9,10]
+            theme = Theme.objects.get(id=random.choice(theme_list))
             post = Post()
             post.title = title
             post.content = content
             post.author = user
             post.category = category
+            post.theme = theme
             post.save()
     return HttpResponse('1')

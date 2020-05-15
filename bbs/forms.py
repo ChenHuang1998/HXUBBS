@@ -45,7 +45,7 @@ class RegForm(forms.Form):
         password_again = self.cleaned_data['password_again']
         if password != password_again:
             raise forms.ValidationError('两次密码不一致')
-        if password == '12345678':
+        if password.isdigit():
             raise forms.ValidationError('密码过于简单')
         return password_again
 

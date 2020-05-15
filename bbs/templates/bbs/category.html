@@ -3,6 +3,9 @@
 {% block category %}
 active
 {% endblock %}
+{% block title %}
+河西学院BBS站|版块页面
+{% endblock %}
 {% block style %}
 <style>
     .bs-example{
@@ -17,8 +20,8 @@ active
 <div class="container">
     <div class="ljdh">
         <ol class="breadcrumb">
-            <li><a href="#">首页</a></li>
-            <li><a href="#">版块信息</a></li>
+            <li><a href="{% url 'index' %}">首页</a></li>
+            <li><a href="">版块信息</a></li>
 
         </ol>
     </div>
@@ -28,7 +31,7 @@ active
             <div class="media bs-example">
                 <div class="media-left media-middle">
                     <a href="/categorydetail/?name={{ category.name }}">
-                        <img class="media-object" src="/media/categoryimg/{{ category.image }}" alt="...">
+                        <img class="media-object" src="/media/{{ category.image }}" alt="...">
                     </a>
                 </div>
                 <div class="media-body">

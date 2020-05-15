@@ -26,6 +26,9 @@ active
     overflow: hidden;
     white-space: nowrap
 }
+    .notice>p{
+        margin-bottom: 1em;
+    }
 
     </style>
 {% endblock %}
@@ -37,8 +40,8 @@ active
                     <h3 style="color: red" class="panel-title"><span class="glyphicon glyphicon-bullhorn" style="margin-right: 1em"></span>公告</h3>
                 </div>
                 <div class="panel-body">
-                    <div style="color: red;margin-bottom: 1em">请文明浏览帖子，发布帖子，文明用语，禁止不良内容的发布</div>
-                    <div style="color: red">游客需要登录才能发帖，点赞和评论</div>
+                    <div class="notice" style="color: red">{{ notice|safe }}</div>
+{#                    <div style="color: red">游客需要登录才能发帖，点赞和评论</div>#}
                 </div>
             </div>
             <div class="panel panel-default">
@@ -97,7 +100,7 @@ active
 
                 </a>
                 {% for category in hot_category_list %}
-                    <a href="" class="list-group-item">{{ category.name }}<span class="badge">{{ category.post_set.count }}</span></a>
+                    <a href="{% url 'categorydetail' %}?name={{ category.name }}" class="list-group-item">{{ category.name }}<span class="badge">{{ category.post_set.count }}</span></a>
 
                 {% endfor %}
 
@@ -123,7 +126,7 @@ active
                     <hr>
                     <div class="row" style="margin-left: 1em">
                         {% for theme in hot_theme %}
-                            <a href="{% url 'categorydetail' %}?name={{ theme.category.name }}&theme={{ theme.id }}"><div class="label {% get_label %}" style="width: 50px">{{ theme.name }}</div></a>
+                            <a href="{% url 'categorydetail' %}?name={{ theme.category.name }}&theme={{ theme.id }}"><div class="label {% get_label %}" style="display:inline-block;margin-bottom: 1em">{{ theme.name }}</div></a>
                         {% endfor %}
 
                     </div>

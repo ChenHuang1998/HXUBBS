@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}
+搜索
+{% endblock %}
+{% block style %}
+    <style>
+    .post>div:first-child{
+        border-top: none;
+    }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="container-fluid" style="min-height: 800px">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div><h3>搜索结果:</h3></div>
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active" id="li_post"><a href="#" onclick="post()">帖子<span class="badge" style="margin-left: 0.5em">{{ post_count }}</span></a></li>
+                <li role="presentation" id="li_cate"><a href="#" onclick="cate()">版块<span class="badge" style="margin-left: 0.5em">{{ cate_count }}</span></a></li>
+                <li role="presentation" id="li_user"><a href="#" onclick="user()">用户<span class="badge" style="margin-left: 0.5em">{{ user_count }}</span></a></li>
+            </ul>
+            <div id="post">
+                {% for post in post_list %}
+                <div class="panel panel-default" >
+                    <div class="panel-body">
+                        <h4><a href="{% url 'postdetail' post.id %}">{{ post.title }}</a></h4>
+                        <div>{{ post.content|slice:100}}</div>
+
+                    </div>
+                </div>
+                {% empty %}
+                    <h3>没有相关内容</h3>
+                {% endfor %}
+            </div>
+
+            <div id="cate" style="display: none">
+                {% for category in category_list %}
+
+                <div class="media bs-example" style="margin-top: 1em">
+                    <div class="media-left media-middle">
+                        <a href="/categorydetail/?name={{ category.name }}">
+                            <img class="media-object" src="/media/{{ category.image }}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <a href="/categorydetail/?name={{ category.name }}"><h4 class="media-heading">{{ category.name }}</h4></a>
+                        <p>{{ category.brief }}</p>
+                        <p>
+                            <span style="margin-right: 2em">主题数：{{ category.theme_set.all.count }}</span>
+                            <span>帖子数：{{ category.post_set.count}}</span>
+                        </p>
+                        <p><a href="/categorydetail/?name={{ category.name }}" class="btn btn-info" role="button">点击进入</a> </p>
+                    </div>
+                </div>
+                {% empty %}
+                    <h3>没有相关内容</h3>
+                {% endfor %}
+            </div>
+            <div id="user" style="display: none">
+                {% for user in user_list %}
+                    <div><h4>{{ user.name }}</h4></div>
+                {% empty %}
+                    <h3>没有相关内容</h3>
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+    function post() {
+        $('#li_post').addClass('active');
+        $('#li_cate').removeClass('active');
+        $('#li_user').removeClass('active');
+        $('#post').css('display','block');
+        $('#cate').css('display','none');
+        $('#user').css('display','none');
+    }
+    function cate() {
+        $('#li_post').removeClass('active');
+        $('#li_cate').addClass('active');
+        $('#li_user').removeClass('active');
+        $('#post').css('display','none');
+        $('#cate').css('display','block');
+        $('#user').css('display','none');
+    }
+    function user() {
+        $('#li_post').removeClass('active');
+        $('#li_cate').removeClass('active');
+        $('#li_user').addClass('active');
+        $('#post').css('display','none');
+        $('#cate').css('display','none');
+        $('#user').css('display','block');
+    }
+    </script>
+{% endblock %}
