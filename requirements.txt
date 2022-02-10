@@ -1,6 +1,6 @@
 certifi==2018.8.24
 chardet==3.0.4
-Django==2.2.1
+Django==2.2.27
 django-ckeditor==5.9.0
 django-el-pagination==3.3.0
 django-js-asset==1.2.2
